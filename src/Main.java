@@ -11,6 +11,7 @@ public class Main {
 
         String input_path = "input_file.txt";
 
+        //todo sanitize for out of bound numbers and letters
         List<String> piece_info = getTextFileInput(input_path);
 
         //todo: delete later, a print out to check correctness
@@ -18,6 +19,7 @@ public class Main {
             System.out.println(piece);
         }
 
+        //todo sanitize inputs for out of range chars and numbers
         int[] inputs =  get_user_inputs();
         //todo: delete later, a print out to check correctness
         System.out.println("(" + inputs[0] + "," + inputs[1] + ")");
@@ -29,6 +31,20 @@ public class Main {
         }
 
         //todo: match <switch> the chess piece object to the type behavior with if statements
+        for (ChessPiece piece : pieces) {
+            switch (piece.type) {
+                case "pawn" -> pawn_movement(piece, inputs);
+                case "knight" -> knight_movement(piece, inputs);
+                case "bishop" -> bishop_movement(piece, inputs);
+                case "rook" -> rook_movement(piece, inputs);
+                case "queen" -> queen_movement(piece, inputs);
+                case "king" -> king_movement(piece, inputs);
+                default -> {
+                    //todo default spot
+                }
+            }
+
+        }
 
     }
 
@@ -77,6 +93,25 @@ public class Main {
            pieces.add(new  ChessPiece(split_info[0], split_info[1],split_info[2],split_info[3]));
         }
         return pieces;
+    }
+
+    public static void pawn_movement(ChessPiece piece, int[] inputs){
+        //todo add pawn logic
+    }
+    public static void rook_movement(ChessPiece piece, int[] inputs){
+        //todo add rook logic
+    }
+    public static void bishop_movement(ChessPiece piece, int[] inputs){
+        //todo add bishop logic
+    }
+    public static void knight_movement(ChessPiece piece, int[] inputs){
+        //todo add knight logic
+    }
+    public static void queen_movement(ChessPiece piece, int[] inputs){
+        //todo add queen logic
+    }
+    public static void king_movement(ChessPiece piece, int[] inputs){
+        //todo add king logic
     }
 
 }
