@@ -9,9 +9,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        String path = "input_file.txt";
+        String input_path = "input_file.txt";
 
-        List<String> piece_info = getTextFileInput(path);
+        List<String> piece_info = getTextFileInput(input_path);
 
        int[] inputs =  get_user_inputs();
 
@@ -20,7 +20,6 @@ public class Main {
         for (String piece : piece_info) {
             System.out.println(piece);
         }
-
     }
 
     public static ArrayList getTextFileInput(String fileName) {
@@ -47,7 +46,6 @@ public class Main {
         return new int[]{letter_to_number(x_movement_str), Integer.parseInt(y_movement_str)};
     }
 
-
     public static int letter_to_number(String letter) {
         return switch (letter){
             case "a" -> 1;
@@ -61,5 +59,4 @@ public class Main {
             default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
         };
     }
-
 }
