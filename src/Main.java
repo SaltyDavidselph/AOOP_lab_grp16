@@ -13,13 +13,23 @@ public class Main {
 
         List<String> piece_info = getTextFileInput(input_path);
 
-       int[] inputs =  get_user_inputs();
-
-        System.out.println("(" + inputs[0] + "," + inputs[1] + ")");
-
+        //todo: delete later, a print out to check correctness
         for (String piece : piece_info) {
             System.out.println(piece);
         }
+
+        int[] inputs =  get_user_inputs();
+        //todo: delete later, a print out to check correctness
+        System.out.println("(" + inputs[0] + "," + inputs[1] + ")");
+
+        List<ChessPiece> pieces = pieceInfoToChessPiece(piece_info);
+        //todo: delete later, a print out to check correctness
+        for (ChessPiece piece : pieces) {
+            System.out.println("Chess Piece " + piece.type + " " + piece.color + " " + piece.x_cord_str + " " + piece.y_cord_str);
+        }
+
+        //todo: match <switch> the chess piece object to the type behavior with if statements
+
     }
 
     public static ArrayList getTextFileInput(String fileName) {
@@ -59,4 +69,14 @@ public class Main {
             default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
         };
     }
+
+    public static List<ChessPiece> pieceInfoToChessPiece(List<String> piece_info){
+        List<ChessPiece> pieces = new ArrayList<ChessPiece>();
+        for(String info : piece_info){
+           String[]  split_info = info.split(", ");
+           pieces.add(new  ChessPiece(split_info[0], split_info[1],split_info[2],split_info[3]));
+        }
+        return pieces;
+    }
+
 }
