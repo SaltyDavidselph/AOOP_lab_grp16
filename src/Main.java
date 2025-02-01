@@ -96,7 +96,12 @@ public class Main {
     }
 
     public static void pawn_movement(ChessPiece piece, int[] inputs){
-        //todo add pawn logic
+        if(piece.x_cord != inputs[0] ||  (inputs[1] - piece.y_cord) > 1 || (inputs[1] - piece.y_cord) < 1) {
+            System.out.println("The Pawn can NOT move from (" + piece.x_cord_str + "," + piece.y_cord_str + ") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")" );
+        }
+        else {
+            System.out.println("The Pawn can move from (" + piece.x_cord_str + "," + piece.y_cord_str + ") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")" );
+        }
     }
     public static void rook_movement(ChessPiece piece, int[] inputs){
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
