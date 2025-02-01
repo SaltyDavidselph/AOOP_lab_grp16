@@ -111,21 +111,39 @@ public class Main {
         //todo add pawn logic
     }
     public static void rook_movement(ChessPiece piece, int[] inputs){
-        //todo add rook logic
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
+            // if the new cords are not in both the x and y plane it is a valid move
             System.out.println("The Rook can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
         }else {
+            //nothing caught it to say it can not do it so it can
             System.out.println("The Rook can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
         }
     }
     public static void bishop_movement(ChessPiece piece, int[] inputs){
-        //todo add bishop logic
+        if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])){
+            // if the new cord are both changed the same amount on the x and y it is a valid move
+            System.out.println("The Bishop can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        }else {
+            //nothing caught it to say it can not do it so it can
+            System.out.println("The Bishop can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        }
     }
     public static void knight_movement(ChessPiece piece, int[] inputs){
         //todo add knight logic
     }
     public static void queen_movement(ChessPiece piece, int[] inputs){
-        //todo add queen logic
+        if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
+            //same logic as the rook
+            System.out.println("The Queen can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        }
+        else if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])) {
+            //same logic as the bishop
+            System.out.println("The Queen can NOT move from (" + piece.x_cord_str + "," + piece.y_cord_str + ") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")");
+        }
+        else {
+            //nothing caught it to say it can not do it so it can
+            System.out.println("The Queen can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        }
     }
     public static void king_movement(ChessPiece piece, int[] inputs){
         //todo add king logic
