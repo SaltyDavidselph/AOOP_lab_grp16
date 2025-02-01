@@ -52,8 +52,6 @@ public class Main {
         List<String> piece_info = new ArrayList<String>();
         try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNextLine()) {
-                //add lines into an array
-                //System.out.println(scanner.nextLine().trim());
                 piece_info.add(scanner.nextLine().trim().toLowerCase());
             }
         } catch (FileNotFoundException e) {
@@ -86,6 +84,20 @@ public class Main {
         };
     }
 
+    public static char numberToLetter(int number) {
+        return switch (number){
+            case 1 -> 'a';
+            case 2 -> 'b';
+            case 3 -> 'c';
+            case 4 -> 'd';
+            case 5 -> 'e';
+            case 6 -> 'f';
+            case 7 -> 'g';
+            case 8 -> 'h';
+            default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + number);
+        };
+    }
+
     public static List<ChessPiece> pieceInfoToChessPiece(List<String> piece_info){
         List<ChessPiece> pieces = new ArrayList<ChessPiece>();
         for(String info : piece_info){
@@ -100,6 +112,11 @@ public class Main {
     }
     public static void rook_movement(ChessPiece piece, int[] inputs){
         //todo add rook logic
+        if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
+            System.out.println("The Rook can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        }else {
+            System.out.println("The Rook can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        }
     }
     public static void bishop_movement(ChessPiece piece, int[] inputs){
         //todo add bishop logic
