@@ -96,49 +96,68 @@ public class Main {
     }
 
     public static void pawn_movement(ChessPiece piece, int[] inputs){
-        //todo add pawn logic
+        if(piece.x_cord != inputs[0] ||  (inputs[1] - piece.y_cord) > 1 || (inputs[1] - piece.y_cord) < 1) {
+            move_failure(piece, inputs);
+        }
+        else {
+            move_succsess(piece, inputs);
+        }
     }
     public static void rook_movement(ChessPiece piece, int[] inputs){
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
             // if the new cords are not in both the x and y plane it is a invalid move
-            System.out.println("The Rook can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            move_failure(piece, inputs);
         }else {
             //nothing caught it to say it can not do it so it can
-            System.out.println("The Rook can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            move_succsess(piece, inputs);
         }
     }
     public static void bishop_movement(ChessPiece piece, int[] inputs){
         if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])){
             // if the new cord are both changed the same amount on the x and y it is a invalid move
-            System.out.println("The Bishop can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            move_failure(piece, inputs);
         }else {
             //nothing caught it to say it can not do it so it can
-            System.out.println("The Bishop can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            move_succsess(piece, inputs);
         }
     }
     public static void knight_movement(ChessPiece piece, int[] inputs){
-        if (!(((Math.abs(piece.x_cord-inputs[0]) != 1)&&(Math.abs(piece.y_cord-inputs[1]) != 2))||((Math.abs(piece.x_cord-inputs[0]) != 2)&&(Math.abs(piece.y_cord-inputs[1]) != 1)))){
-            System.out.println("The Knight can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        if (!(((Math.abs(piece.x_cord-inputs[0]) == 1)&&(Math.abs(piece.y_cord-inputs[1]) == 2))||((Math.abs(piece.x_cord-inputs[0]) == 2)&&(Math.abs(piece.y_cord-inputs[1]) == 1)))){
+            move_failure(piece, inputs);
             return;
         }
-        System.out.println("The Knight can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+        move_succsess(piece, inputs);
     }
     public static void queen_movement(ChessPiece piece, int[] inputs){
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
             //same logic as the rook
-            System.out.println("The Queen can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            move_failure(piece, inputs);
         }
         else if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])) {
             //same logic as the bishop
-            System.out.println("The Queen can NOT move from (" + piece.x_cord_str + "," + piece.y_cord_str + ") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")");
+            move_failure(piece, inputs);
         }
         else {
             //nothing caught it to say it can not do it so it can
-            System.out.println("The Queen can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            move_succsess(piece, inputs);
         }
     }
     public static void king_movement(ChessPiece piece, int[] inputs){
-        //todo add king logic
+        if(Math.abs(piece.x_cord - inputs[0]) > 1 || Math.abs(piece.y_cord - inputs[1]) > 1){
+            move_failure(piece, inputs);
+        }
+        else{
+            move_succsess(piece, inputs);
+
+        }
+    }
+    
+    //helper methods to reduce bulk
+    public static void move_succsess(ChessPiece piece, int[] inputs){
+        System.out.println("The "+piece.type+" can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+    }
+    public static void move_failure(ChessPiece piece, int[] inputs){
+        System.out.println("The "+piece.type+" can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
     }
 
 }
