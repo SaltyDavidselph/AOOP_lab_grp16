@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        String input_path = "input_file.txt";
+        String input_path = "C:\\Users\\adtorres35\\OneDrive - University of Texas at El Paso\\Desktop\\AOOP\\AOOP_lab_grp16\\input_file.txt";
 
         //todo sanitize for out of bound numbers and letters
         List<String> piece_info = getTextFileInput(input_path);
@@ -117,7 +117,11 @@ public class Main {
         }
     }
     public static void knight_movement(ChessPiece piece, int[] inputs){
-        //todo add knight logic
+        if (!(((Math.abs(piece.x_cord-inputs[0]) != 1)&&(Math.abs(piece.y_cord-inputs[1]) != 2))||((Math.abs(piece.x_cord-inputs[0]) != 2)&&(Math.abs(piece.y_cord-inputs[1]) != 1)))){
+            System.out.println("The Knight can NOT move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
+            return;
+        }
+        System.out.println("The Knight can move from (" + piece.x_cord_str +"," + piece.y_cord_str +") to (" + numberToLetter(inputs[0]) + "," + inputs[1] + ")"  );
     }
     public static void queen_movement(ChessPiece piece, int[] inputs){
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
