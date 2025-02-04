@@ -74,7 +74,7 @@ public class Main {
                     throw input_err;
                 }else{
                     char []user_input_arr = x_movement_str.toCharArray();
-                    if((user_input_arr[0]>='h')||(user_input_arr[0]<'a')){
+                    if((user_input_arr[0]>'h')||(user_input_arr[0]<'a')){
                         throw input_err;
                     }
                 }
