@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException{      //added IOexeption
 
-        String input_path = "C:\\Users\\adtorres35\\OneDrive - University of Texas at El Paso\\Desktop\\AOOP\\AOOP_lab_grp16\\input_file.txt";
+        String input_path = "input_file.txt";
         //String input_path = "input_file.txt";     //this doesnt seem to work, i belive its because of the school computer i use
 
         //todo sanitize for out of bound numbers and letters
@@ -19,7 +19,7 @@ public class Main {
 
         int[] inputs =  get_user_inputs();
 
-        List<ChessPiece> pieces = pieceInfoToChessPiece(piece_info);
+        List<ChessPiece>  pieces = pieceInfoToChessPiece(piece_info);
 
         for (ChessPiece piece : pieces) {
             switch (piece.type) {
@@ -37,6 +37,16 @@ public class Main {
         }
 
     }
+
+    public static class ChessPiece {
+        public String type;
+        public String color;
+        public String x_cord_str;
+        public String y_cord_str;
+        public int x_cord;
+        public int y_cord;
+    }
+
 
     public static ArrayList getTextFileInput(String fileName) {
         List<String> piece_info = new ArrayList<String>();
@@ -126,7 +136,24 @@ public class Main {
         List<ChessPiece> pieces = new ArrayList<ChessPiece>();
         for(String info : piece_info){
            String[]  split_info = info.split(", ");
-           pieces.add(new  ChessPiece(split_info[0], split_info[1],split_info[2],split_info[3]));
+            ChessPiece cp = new ChessPiece();
+            cp.type = split_info[0];
+            cp.color= split_info[1];
+            cp.x_cord_str = split_info[2];
+            cp.y_cord_str = split_info[3];
+            cp.x_cord = switch (split_info[2]) {
+                case "a" -> 1;
+                case "b" -> 2;
+                case "c" -> 3;
+                case "d" -> 4;
+                case "e" -> 5;
+                case "f" -> 6;
+                case "g" -> 7;
+                case "h" -> 8;
+                default -> throw new IllegalStateException("Value not on the x-asis of the chess board: ");
+            };
+            cp.y_cord = Integer.parseInt(split_info[3]);
+           pieces.add(cp);
         }
         return pieces;
     }
@@ -141,7 +168,7 @@ public class Main {
     }
     public static void rook_movement(ChessPiece piece, int[] inputs){
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
-            // if the new cords are not in both the x and y plane it is a invalid move
+            // if the new cords are not in both the x and y plane it is an invalid move
             move_failure(piece, inputs);
         }else {
             //nothing caught it to say it can not do it so it can
@@ -150,7 +177,7 @@ public class Main {
     }
     public static void bishop_movement(ChessPiece piece, int[] inputs){
         if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])){
-            // if the new cord are both changed the same amount on the x and y it is a invalid move
+            // if the new cord are both changed the same amount on the x and y it is an invalid move
             move_failure(piece, inputs);
         }else {
             //nothing caught it to say it can not do it so it can
@@ -165,12 +192,8 @@ public class Main {
         move_succsess(piece, inputs);
     }
     public static void queen_movement(ChessPiece piece, int[] inputs){
-        if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
+        if ((Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0) && ((Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])))){
             //same logic as the rook
-            move_failure(piece, inputs);
-        }
-        else if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])) {
-            //same logic as the bishop
             move_failure(piece, inputs);
         }
         else {
