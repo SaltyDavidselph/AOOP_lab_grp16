@@ -21,7 +21,7 @@ public class Main {
         //AUTHORS - David Selph, Angel Torres & Rafael Carmona
         String input_path = "input_file.txt";
         
-        
+        //testing git commit
         List<String> piece_info = getTextFileInput(input_path);
 
         int[] inputs =  get_user_inputs();
