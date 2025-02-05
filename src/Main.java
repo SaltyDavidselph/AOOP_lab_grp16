@@ -22,6 +22,7 @@ public class Main {
         String input_path = "input_file.txt";
         
         //testing git commit
+        //also testing
         List<String> piece_info = getTextFileInput(input_path);
 
         int[] inputs =  get_user_inputs();
