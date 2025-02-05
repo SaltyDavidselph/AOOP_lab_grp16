@@ -6,15 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*LAB1 Project. AUTHORS - David Selph, Angel Torres & Rafael Carmona
+ * Description of program.
+ *  - Validate user's input about the movement of a chess piece (in this case, official chess rules are not applicable) through the use
+ * of methods, objects and javas functionality.
+ */
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException{      //added IOexeption
 
+        //This section reads the input file
+        //AUTHORS - David Selph, Angel Torres & Rafael Carmona
         String input_path = "input_file.txt";
-        //String input_path = "input_file.txt";     //this doesnt seem to work, i belive its because of the school computer i use
-
-        //todo sanitize for out of bound numbers and letters
+        
+        
         List<String> piece_info = getTextFileInput(input_path);
 
         int[] inputs =  get_user_inputs();
@@ -38,6 +45,7 @@ public class Main {
 
     }
 
+    //Object that holds the chess piece information
     public static class ChessPiece {
         public String type;
         public String color;
@@ -48,6 +56,7 @@ public class Main {
     }
 
 
+    //Store the information from the file into a data structure (String Array)
     public static ArrayList getTextFileInput(String fileName) {
         List<String> piece_info = new ArrayList<String>();
         try (Scanner scanner = new Scanner(new File(fileName))) {
@@ -60,6 +69,7 @@ public class Main {
         return new ArrayList(piece_info);
     }
 
+    //Get the users input to move a chess piece, using x and y coordinates as positions. Check for valid input
     public static int[] get_user_inputs(){
         Exception input_err = new Exception("user input not within string length or board size");
         
@@ -104,6 +114,8 @@ public class Main {
         return new int[]{letter_to_number(x_movement_str), y_movement_int};     //changed y_movement form string to int
     }
 
+    //Takes the input from the user that corresponds to the x coordinate as a parameter
+    //Convert the letter corresponding to the x position into an integer value
     public static int letter_to_number(String letter) {
         return switch (letter){
             case "a" -> 1;
@@ -118,6 +130,8 @@ public class Main {
         };
     }
 
+    //Takes the "letter to number" conversion from previous method as a parameter and converts it back to its corresponding number
+    //Convert back 
     public static char numberToLetter(int number) {
         return switch (number){
             case 1 -> 'a';
@@ -132,6 +146,7 @@ public class Main {
         };
     }
 
+    //Takes the array list of chess pieces (object) as a paramter and places the information with its correspoding attribute
     public static List<ChessPiece> pieceInfoToChessPiece(List<String> piece_info){
         List<ChessPiece> pieces = new ArrayList<ChessPiece>();
         for(String info : piece_info){
@@ -158,6 +173,9 @@ public class Main {
         return pieces;
     }
 
+     /*Following methods validate the movement of a specific chess piece, taking the information from the object (Chess Piece) and the user's input as 
+    parameters.
+    */
     public static void pawn_movement(ChessPiece piece, int[] inputs){
         if(piece.x_cord != inputs[0] ||  (inputs[1] - piece.y_cord) > 1 || (inputs[1] - piece.y_cord) < 1) {
             move_failure(piece, inputs);
@@ -166,6 +184,8 @@ public class Main {
             move_succsess(piece, inputs);
         }
     }
+
+     //AUTHORS - David Selph
     public static void rook_movement(ChessPiece piece, int[] inputs){
         if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
             // if the new cords are not in both the x and y plane it is an invalid move
@@ -175,6 +195,8 @@ public class Main {
             move_succsess(piece, inputs);
         }
     }
+
+    //AUTHORS - David Selph
     public static void bishop_movement(ChessPiece piece, int[] inputs){
         if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])){
             // if the new cord are both changed the same amount on the x and y it is an invalid move
@@ -184,6 +206,8 @@ public class Main {
             move_succsess(piece, inputs);
         }
     }
+
+    //AUTHORS - Angel Torres
     public static void knight_movement(ChessPiece piece, int[] inputs){
         if (!(((Math.abs(piece.x_cord-inputs[0]) == 1)&&(Math.abs(piece.y_cord-inputs[1]) == 2))||((Math.abs(piece.x_cord-inputs[0]) == 2)&&(Math.abs(piece.y_cord-inputs[1]) == 1)))){
             move_failure(piece, inputs);
@@ -191,6 +215,8 @@ public class Main {
         }
         move_succsess(piece, inputs);
     }
+
+    //AUTHORS - David Selph
     public static void queen_movement(ChessPiece piece, int[] inputs){
         if ((Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0) && ((Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])))){
             //same logic as the rook
@@ -201,6 +227,8 @@ public class Main {
             move_succsess(piece, inputs);
         }
     }
+
+    //AUTHORS - Rafael Carmona
     public static void king_movement(ChessPiece piece, int[] inputs){
         if(Math.abs(piece.x_cord - inputs[0]) > 1 || Math.abs(piece.y_cord - inputs[1]) > 1){
             move_failure(piece, inputs);
