@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,6 +53,10 @@ public class Main {
         public String y_cord_str;
         public int x_cord;
         public int y_cord;
+    }
+
+    enum chess_type{
+        pawn,rook,knight,bishop,queen,king
     }
 
 
@@ -112,12 +115,12 @@ public class Main {
 
         }
 
-        return new int[]{letter_to_number(x_movement_str), y_movement_int};     //changed y_movement form string to int
+        return new int[]{letterToNumber(x_movement_str), y_movement_int};     //changed y_movement form string to int
     }
 
     //Takes the input from the user that corresponds to the x coordinate as a parameter
     //Convert the letter corresponding to the x position into an integer value
-    public static int letter_to_number(String letter) {
+    public static int letterToNumber(String letter) {
         return switch (letter){
             case "a" -> 1;
             case "b" -> 2;
@@ -177,68 +180,68 @@ public class Main {
      /*Following methods validate the movement of a specific chess piece, taking the information from the object (Chess Piece) and the user's input as 
     parameters.
     */
-    public static void pawn_movement(ChessPiece piece, int[] inputs){
-        if(piece.x_cord != inputs[0] ||  (inputs[1] - piece.y_cord) > 1 || (inputs[1] - piece.y_cord) < 1) {
-            move_failure(piece, inputs);
-        }
-        else {
-            move_succsess(piece, inputs);
-        }
-    }
-
-     //AUTHORS - David Selph
-    public static void rook_movement(ChessPiece piece, int[] inputs){
-        if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
-            // if the new cords are not in both the x and y plane it is an invalid move
-            move_failure(piece, inputs);
-        }else {
-            //nothing caught it to say it can not do it so it can
-            move_succsess(piece, inputs);
-        }
-    }
-
-    //AUTHORS - David Selph
-    public static void bishop_movement(ChessPiece piece, int[] inputs){
-        if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])){
-            // if the new cord are both changed the same amount on the x and y it is an invalid move
-            move_failure(piece, inputs);
-        }else {
-            //nothing caught it to say it can not do it so it can
-            move_succsess(piece, inputs);
-        }
-    }
-
-    //AUTHORS - Angel Torres
-    public static void knight_movement(ChessPiece piece, int[] inputs){
-        if (!(((Math.abs(piece.x_cord-inputs[0]) == 1)&&(Math.abs(piece.y_cord-inputs[1]) == 2))||((Math.abs(piece.x_cord-inputs[0]) == 2)&&(Math.abs(piece.y_cord-inputs[1]) == 1)))){
-            move_failure(piece, inputs);
-            return;
-        }
-        move_succsess(piece, inputs);
-    }
-
-    //AUTHORS - David Selph
-    public static void queen_movement(ChessPiece piece, int[] inputs){
-        if ((Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0) && ((Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])))){
-            //same logic as the rook
-            move_failure(piece, inputs);
-        }
-        else {
-            //nothing caught it to say it can not do it so it can
-            move_succsess(piece, inputs);
-        }
-    }
-
-    //AUTHORS - Rafael Carmona
-    public static void king_movement(ChessPiece piece, int[] inputs){
-        if(Math.abs(piece.x_cord - inputs[0]) > 1 || Math.abs(piece.y_cord - inputs[1]) > 1){
-            move_failure(piece, inputs);
-        }
-        else{
-            move_succsess(piece, inputs);
-
-        }
-    }
+//    public static void pawn_movement(ChessPiece piece, int[] inputs){
+//        if(piece.x_cord != inputs[0] ||  (inputs[1] - piece.y_cord) > 1 || (inputs[1] - piece.y_cord) < 1) {
+//            move_failure(piece, inputs);
+//        }
+//        else {
+//            move_succsess(piece, inputs);
+//        }
+//    }
+//
+//     //AUTHORS - David Selph
+//    public static void rook_movement(ChessPiece piece, int[] inputs){
+//        if (Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0){
+//            // if the new cords are not in both the x and y plane it is an invalid move
+//            move_failure(piece, inputs);
+//        }else {
+//            //nothing caught it to say it can not do it so it can
+//            move_succsess(piece, inputs);
+//        }
+//    }
+//
+//    //AUTHORS - David Selph
+//    public static void bishop_movement(ChessPiece piece, int[] inputs){
+//        if (Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])){
+//            // if the new cord are both changed the same amount on the x and y it is an invalid move
+//            move_failure(piece, inputs);
+//        }else {
+//            //nothing caught it to say it can not do it so it can
+//            move_succsess(piece, inputs);
+//        }
+//    }
+//
+//    //AUTHORS - Angel Torres
+//    public static void knight_movement(ChessPiece piece, int[] inputs){
+//        if (!(((Math.abs(piece.x_cord-inputs[0]) == 1)&&(Math.abs(piece.y_cord-inputs[1]) == 2))||((Math.abs(piece.x_cord-inputs[0]) == 2)&&(Math.abs(piece.y_cord-inputs[1]) == 1)))){
+//            move_failure(piece, inputs);
+//            return;
+//        }
+//        move_succsess(piece, inputs);
+//    }
+//
+//    //AUTHORS - David Selph
+//    public static void queen_movement(ChessPiece piece, int[] inputs){
+//        if ((Math.abs((piece.x_cord - inputs[0])) > 0 && Math.abs((piece.y_cord - inputs[1] )) > 0) && ((Math.abs(piece.x_cord-inputs[0]) != Math.abs(piece.y_cord-inputs[1])))){
+//            //same logic as the rook
+//            move_failure(piece, inputs);
+//        }
+//        else {
+//            //nothing caught it to say it can not do it so it can
+//            move_succsess(piece, inputs);
+//        }
+//    }
+//
+//    //AUTHORS - Rafael Carmona
+//    public static void king_movement(ChessPiece piece, int[] inputs){
+//        if(Math.abs(piece.x_cord - inputs[0]) > 1 || Math.abs(piece.y_cord - inputs[1]) > 1){
+//            move_failure(piece, inputs);
+//        }
+//        else{
+//            move_succsess(piece, inputs);
+//
+//        }
+//    }
 
     
     //helper methods to reduce bulk
