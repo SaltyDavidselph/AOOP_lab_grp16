@@ -10,7 +10,7 @@ public class Knight {
     public Knight(){
     }
     public Knight( String color, String x_cord_str, String y_cord_str) {
-        this.name = Main.chess_type.king;
+        this.name = Main.chess_type.knight;
         this.color = color;
         this.x_cord_str = x_cord_str;
         this.y_cord_str = y_cord_str;

@@ -243,7 +243,71 @@ public class Main {
 //        }
 //    }
 
-    
+/**
+ * get the next string input from user
+ * @return
+ */
+    public static String get_user_string(){
+        boolean invalid_string = true;
+        Scanner user_input = new Scanner(System.in);
+        while(invalid_string){
+            try {
+                user_input.next();
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+            user_input.close();
+            return user_input;
+        }
+    }
+    /**
+     * get the next int input from user
+     * @return
+     */
+    public static int get_user_int(){
+        boolean invalid_int = true;
+        Scanner user_input = new Scanner(System.in);
+        while(invalid_int){
+            try {
+                user_input.nextInt();
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+            user_input.close();
+            return user_input;
+        }
+    }
+    /**
+     * prompts user to enter peice type
+     * @return enum of correct peice 
+     */
+    public static chess_type getPeice(){
+        System.out.println("please enter peice type");
+        user_input = get_user_string();
+        if(user_input.contains("qu")){
+            return chess_type.queen;
+        }else;
+        if(user_input.contains("ki")){
+            return chess_type.king;
+        }else;
+        if(user_input.contains("kn")){
+            return chess_type.knight;
+        }else;
+        if(user_input.contains("ro")){
+            return chess_type.rook;
+        }else;
+        if(user_input.contains("bi")){
+            return chess_type.bishop;
+        }else;
+        if(user_input.contains("pa")){
+            return chess_type.pawn;
+        }else;
+        System.out.println("please enter valid peice");
+        return getPeice(user_input);
+    }
+    public static String get_color(){
+        return get_user_string();
+    }
     //helper methods to reduce bulk
     /**
      * Print a messge that the desired move is possible
