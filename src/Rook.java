@@ -1,4 +1,9 @@
+// Refactored into objects by David Selph
 public class Rook {
+    //an object that is a Rook in chess
+    //includes an empty constructor, a constuctor that takes values, setters and getters for the data that needs them,
+    // and a method that verifies if it can be moved to a given location
+
     public Main.chess_type name;
     public String color;
     public String x_cord_str;
@@ -10,7 +15,7 @@ public class Rook {
     public Rook(){
     }
     public Rook( String color, String x_cord_str, String y_cord_str) {
-        this.name = Main.chess_type.rook;
+        this.name = Main.chess_type.ROOK;
         this.color = color;
         this.x_cord_str = x_cord_str;
         this.y_cord_str = y_cord_str;
