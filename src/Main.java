@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException{      //added IOexeption
         
         
-
+        //Author: Rafeal C. and David Selph
         boolean term_inner = true;
         while(term_inner) {
             chess_type user_input_piece = getPiece(chess_type.NULL);
@@ -117,11 +117,12 @@ public class Main {
         System.out.println("Goodbye!");
     }
 
-
+    //Author: David Selph
     enum chess_type{
         PAWN,ROOK,KNIGHT,BISHOP,QUEEN,KING,NULL,
     }
 
+    //Author:Angel Torres
     public static String get_user_input_y(String cord_type){
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -139,6 +140,7 @@ public class Main {
         }
     }
 
+    //Author: Angel Torres
     public static String get_user_input_x(String cord_type){
 
         Scanner scanner = new Scanner(System.in);
@@ -158,6 +160,7 @@ public class Main {
         }
     }
 
+    //Author:David Selph
     //Takes the input from the user that corresponds to the x coordinate as a parameter
     //Convert the letter corresponding to the x position into an integer value
     public static int letterToNumber(String letter) {
@@ -174,27 +177,12 @@ public class Main {
         };
     }
 
-    //Takes the "letter to number" conversion from previous method as a parameter and converts it back to its corresponding number
-    //Convert back 
-    public static char numberToLetter(int number) {
-        return switch (number){
-            case 1 -> 'a';
-            case 2 -> 'b';
-            case 3 -> 'c';
-            case 4 -> 'd';
-            case 5 -> 'e';
-            case 6 -> 'f';
-            case 7 -> 'g';
-            case 8 -> 'h';
-            default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + number);
-        };
-    }
-
 
 /**
  * get the next string input from user
  * @return
  */
+//Author:Angel Torres
     public static String get_user_string(String query){
         System.out.println(query);
         boolean invalid_string = true;
@@ -211,7 +199,8 @@ public class Main {
     }
     /**
      * prompts user to enter peice type
-     * @return enum of correct peice 
+     * @return enum of correct peice
+     * Author: Angel Torres
      */
     public static chess_type getPiece( chess_type type){
 
@@ -248,18 +237,14 @@ public class Main {
     //helper methods to reduce bulk
     /**
      * Print a messge that the desired move is possible
-     * 
-     * @param piece current chess piece
-     * @param inputs the desired move
+     * Author: Angel Torres, David Selph
      */
     public static void move_succsess(chess_type type, String color, String x_start, String y_start, String x_end, String y_end){
         System.out.println("The "+ color + " "+ type+" can move from (" + x_start +"," + y_start +") to (" + x_end + "," + y_end + ")"  );
     }
     /**
      * Print a messge that the desired move is NOT possible
-     * 
-     * @param piece current chess piece
-     * @param inputs the desired move
+     * Author: Angel Torres, David Selph
      */
     public static void move_failure(chess_type type, String color, String x_start, String y_start, String x_end, String y_end){
         System.out.println("The " + color + " "+ type+" can NOT move from (" + x_start +"," + y_start +") to (" + x_end + "," + y_end + ")"    );
