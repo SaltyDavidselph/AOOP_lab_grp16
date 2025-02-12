@@ -95,108 +95,11 @@ public class Main {
         }
         break;
     }
-
-    //     int [] get_user_inputs();
-    //     //Check the users input
-    //     Scanner scnr = new Scanner(System.in);
-    //     System.out.println("Select a piece: [Pawn, King, Queen, Bishop, Knigth or Rook]");
-    //     String name = scnr.nextLine().toLowerCase();
-
-    //     System.out.println("White or Black piece: ");
-    //     String color = scnr.nextLine().toLowerCase();
-
-    //     System.out.println("Provide initial position (Letter, Number)");
-    //     int y_cord_str = scnr.nextInt();
-    //     int x_cord_str = scnr.nextInt();
-
-    //     System.out.println("Provide final position (Letter, Number)");
-    //     int y2 = scnr.nextInt();
-    //     int x2 = scnr.nextInt();
-
-    //    //Case, based on user selection
-    //    case "pawn" ->
-    //    case "rook" ->
-    //    case "king" ->
-    //    case "queen" ->
-    //    case "bishop" ->
-    //    case "kinght" ->
-
-    //     piece_Object "name" = new Pawn(color, x_cord_str, y_cord_str);
-
-    //     Pawn.verifyMovement();
-
-    //     if(Pawn.verifyMovement()){
-    //         System.out.println("Succesful move.");
-    //     }
-    //     else{
-    //         move_failure();
-    //         System.out.println("Failed move.");
-    //     }
-
-    //     System.out.println("Would you like to move to a different position?");
-    //     String userAnswer = scnr.nextLine();
-    //     if(userAnswer.equalsIgnoreCase("Yes")){
-    //         System.out.println("Provide new target position:");
-    //     }
-    //     else if(userAnswer.equalsIgnoreCase("No")){
-    //         System.out.println("Would you like a new piece, new initial and final positions?");
-    //     }
-    //     else{
-    //         terminate = true;
-    //         break;
-    //     }
-    // }
-
     }
 
     enum chess_type{
         PAWN,ROOK,KNIGHT,BISHOP,QUEEN,KING,NULL,
     }
-
-    // //Get the users input to move a chess piece, using x and y coordinates as positions. Check for valid input
-    // public static int[] get_user_inputs(){
-    //     Exception input_err = new Exception("user input not within string length or board size");
-        
-    //     boolean invalid_input = true;
-    //     Scanner user_input = new Scanner(System.in);
-    //     String x_movement_str = "";
-    //     while (invalid_input) {
-    //         System.out.println("Enter the Letter for a space on the board: ");
-    //         try {
-    //             x_movement_str = user_input.nextLine().toLowerCase();
-    //             if(x_movement_str.length() >1){         //checking for length is kind of redundant since i only use the first char later anyway
-    //                 throw input_err;
-    //             }else{
-    //                 char []user_input_arr = x_movement_str.toCharArray();
-    //                 if((user_input_arr[0]>'h')||(user_input_arr[0]<'a')){
-    //                     throw input_err;
-    //                 }
-    //             }
-    //             invalid_input = false;      //escape this mortal coil
-    //         } catch (Exception e) {
-    //             // TODO: handle exception
-    //             System.out.println("please enter the valid letter for a space within the board");
-    //         }
-    //     }
-    //     invalid_input = true;
-    //     int y_movement_int = 0;
-    //     while(invalid_input){
-    //         System.out.println("Enter the number for a space on the board: ");
-    //         try {
-    //             y_movement_int = user_input.nextInt();
-    //             if((y_movement_int > 8)||(y_movement_int<1)){
-    //                 throw input_err;
-    //             }
-    //             invalid_input = false;
-    //         } catch (Exception e) {
-    //             // TODO: handle exception
-    //             System.out.println("please enter the valid number for a space within the board");
-    //         }
-
-    //     }
-
-    //     return new int[]{letterToNumber(x_movement_str), y_movement_int};     //changed y_movement form string to int
-    // }
 
     public static String get_user_input_x(){
         Exception input_err = new Exception("user input not within string length or board size");
