@@ -31,7 +31,7 @@ public class Main {
                     String user_input_x_end_str = get_user_input_x("target");
                     String user_input_y_end_str = get_user_input_y("target");
 
-                    int[] int_inputs = {Integer.parseInt(user_input_y_end_str),letterToNumber(user_input_x_end_str)};
+                    int[] int_inputs = {letterToNumber(user_input_x_end_str),Integer.parseInt(user_input_y_end_str)};
 
                     //create the object based on the give information 
                     switch (user_input_piece) {
