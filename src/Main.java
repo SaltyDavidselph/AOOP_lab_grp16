@@ -14,32 +14,28 @@ public class Main {
         
         
 
-    boolean terminate = false;
-    while(terminate != true){
-        //promp user inputs for piece and color
-        chess_type user_input_piece = getPiece(chess_type.NULL);
-        String user_input_color = get_color();
-        boolean term_inner = false;
+        boolean term_inner = true;
         while(term_inner) {
+            chess_type user_input_piece = getPiece(chess_type.NULL);
+            String user_input_color = get_color();
+
             //promp user for start spots
-            String user_input_x_start = get_user_input_x();
-            String user_input_y_start = get_user_input_y();
+            String user_input_x_start = get_user_input_x("starting");
+            String user_input_y_start = get_user_input_y("starting");
 
            
 
-            boolean term_inner_inner = false;
+            boolean term_inner_inner = true;
                 while(term_inner_inner) {
                     //promp user for end spot
-                    String user_input_x_end_str = get_user_input_x();
-                    String user_input_y_end_str = get_user_input_y();
-                    
-                    int user_input_y_end_int = Integer.parseInt(user_input_y_end_str);
-                    int user_input_x_end_int = letterToNumber(user_input_y_end_str);
-                    int[] int_inputs = {Integer.parseInt(user_input_y_end_str),letterToNumber(user_input_y_end_str)};
+                    String user_input_x_end_str = get_user_input_x("target");
+                    String user_input_y_end_str = get_user_input_y("target");
+
+                    int[] int_inputs = {Integer.parseInt(user_input_y_end_str),letterToNumber(user_input_x_end_str)};
 
                     //create the object based on the give information 
                     switch (user_input_piece) {
-                        case PAWN: {
+                        case PAWN:
                             Pawn pawn = new Pawn(user_input_color,user_input_x_start,user_input_y_start);
                             if (pawn.verify_movement(int_inputs)){
                                 move_succsess(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
@@ -47,112 +43,119 @@ public class Main {
                             else{
                                 move_failure(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }
-                        }
-                        case ROOK:{
+                            break;
+                        case ROOK:
                             Rook rook = new Rook(user_input_color,user_input_x_start,user_input_y_start);
                             if (rook.verify_movement(int_inputs)){
                                 move_succsess(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }else{
                                 move_failure(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }
-                        }
+                            break;
                         case KNIGHT:
-                            {Knight knight = new Knight(user_input_color,user_input_x_start,user_input_y_start);
+                            Knight knight = new Knight(user_input_color,user_input_x_start,user_input_y_start);
                             if (knight.verify_movement(int_inputs)){
                                 move_succsess(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }else{
                                 move_failure(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }
-                        }
+                            break;
                         case BISHOP:
-                            {Bishop bishop = new Bishop(user_input_color,user_input_x_start,user_input_y_start);
+                            Bishop bishop = new Bishop(user_input_color,user_input_x_start,user_input_y_start);
                             if (bishop.verify_movement(int_inputs)){
                                 move_succsess(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }else{
                                 move_failure(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }
-                        }
-                        case QUEEN:{Queen queen = new Queen(user_input_color,user_input_x_start,user_input_y_start);
+                            break;
+                        case QUEEN:Queen queen = new Queen(user_input_color,user_input_x_start,user_input_y_start);
                             if (queen.verify_movement(int_inputs)){
                                 move_succsess(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }
                             else{
                                 move_failure(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }}
-                        case KING:{King charlies = new King(user_input_color,user_input_x_start,user_input_y_start);
+                            }
+                            break;
+                        case KING:King charlies = new King(user_input_color,user_input_x_start,user_input_y_start);
                             if (charlies.verify_movement(int_inputs)){
                                 move_succsess(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
                             }
                             else{
                                 move_failure(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }}  
-                        case NULL:{}
+                            }
+                            break;
+                        case NULL:
                     }
                     //promp user to see if they want to use the same piece and adifferent target OR new piece 
                     //if new target rerun all of it 
-                    String con = get_user_string("Would you like to test another");
+                    String con = get_user_string("Would you like to test another set of target cords? Yes or No");
+                    Boolean answer = true;
+                    while(answer){
+                        if (con.equals("no")){
+                            term_inner_inner = false;
+                            answer = false;
+                        } else if (con.equals("yes")) {
+                            answer = false;
+                        } else {
+                            con = get_user_string("Please Say: Yes or No");
+                        }
+                    }
                 }
+            String again = get_user_string("Do you want to pick a new chess piece and starting cord? Yes or No").toLowerCase();
+                Boolean answer = true;
+                while(answer){
+                    if (again.equals("no")){
+                      term_inner = false;
+                        answer = false;
+                    } else if (again.equals("yes")) {
+                        answer = false;
+                    } else {
+                        again = get_user_string("Please only say Yes or No").toLowerCase();
+                }
+            }
         }
-        break;
+        System.out.println("Goodbye!");
     }
-    }
+
 
     enum chess_type{
         PAWN,ROOK,KNIGHT,BISHOP,QUEEN,KING,NULL,
     }
 
-    public static String get_user_input_x(){
-        Exception input_err = new Exception("user input not within string length or board size");
-        
-        boolean invalid_input = true;
-        Scanner user_input = new Scanner(System.in);
-        String x_movement_str = "";
-        while (invalid_input) {
-            System.out.println("Enter the Letter for a column on the board: ");
-            try {
-                x_movement_str = user_input.nextLine().toLowerCase();
-                if(x_movement_str.length() >1){         //checking for length is kind of redundant since i only use the first char later anyway
-                    throw input_err;
-                }else{
-                    char []user_input_arr = x_movement_str.toCharArray();
-                    if((user_input_arr[0]>'h')||(user_input_arr[0]<'a')){
-                        throw input_err;
-                    }
-                }
-                invalid_input = false;      //escape this mortal coil
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("please enter the valid letter for a space within the board");
+    public static String get_user_input_y(String cord_type){
+        Scanner scanner = new Scanner(System.in);
+        String input;
+
+        while (true) {
+            System.out.println("Please enter the y cord "+ cord_type +" position as a number 1-8: ");
+            input = scanner.nextLine().toLowerCase();
+
+            if (input.equals("1") || input.equals("2") || input.equals("3")||input.equals("4")||input.equals("5")||
+                    input.equals("6")||input.equals("7")||input.equals("8")) {
+                return input;
+            } else {
+                System.out.println("Input not approved, try again.");
             }
         }
-        return x_movement_str;
     }
 
-    public static String get_user_input_y(){
-        Exception input_err = new Exception("user input not within string length or board size");
-        
-        boolean invalid_input = true;
-        Scanner user_input = new Scanner(System.in);
-        String y_movement_str = "";
-        while (invalid_input) {
-            System.out.println("Enter the number for a row on the board: ");
-            try {
-                y_movement_str = user_input.nextLine().toLowerCase();
-                if(y_movement_str.length() >1){         //checking for length is kind of redundant since i only use the first char later anyway
-                    throw input_err;
-                }else{
-                    char []user_input_arr = y_movement_str.toCharArray();
-                    if((user_input_arr[0]>'1')||(user_input_arr[0]<'8')){
-                        throw input_err;
-                    }
-                }
-                invalid_input = false;      //escape this mortal coil
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("please enter the valid letter for a space within the board");
+    public static String get_user_input_x(String cord_type){
+
+        Scanner scanner = new Scanner(System.in);
+        String input;
+
+        while (true) {
+            System.out.println("Please enter the x cord " + cord_type + " position as a letter a-h:  ");
+            input = scanner.nextLine().toLowerCase();
+
+            if
+            (input.equals("a") || input.equals("b") || input.equals("c")||input.equals("d")||input.equals("e")||
+                    input.equals("f")||input.equals("g")||input.equals("h")) {
+                return input;
+            } else {
+                System.out.println("Input not approved, try again.");
             }
         }
-        return y_movement_str;
     }
 
     //Takes the input from the user that corresponds to the x coordinate as a parameter
@@ -195,21 +198,15 @@ public class Main {
     public static String get_user_string(String query){
         System.out.println(query);
         boolean invalid_string = true;
-        System.out.println("bol" + invalid_string);
         Scanner user_input = new Scanner(System.in);
         String user_string = "";
-        System.out.println(" "+user_string);
         while(invalid_string){
             try {
-                System.out.println("pre scanner next line: ");
                 user_string = user_input.nextLine();
                 invalid_string = false;
             } catch (Exception e) {
-
             }
-            user_input.close();
         }
-        user_input.close();
         return user_string.toLowerCase();
     }
     /**
@@ -217,23 +214,25 @@ public class Main {
      * @return enum of correct peice 
      */
     public static chess_type getPiece( chess_type type){
+
         try{
-        String user_input = get_user_string("what piece would you like to test");
-        if(user_input.contains("qu")){
+        String user_input = get_user_string("what piece would you like to test?");
+
+        if(user_input.equals("queen")){
             return chess_type.QUEEN;
-        }else if(user_input.contains("ki")){
+        }else if(user_input.equals("king")){
             return chess_type.KING;
-        }else if(user_input.contains("kn")){
+        }else if(user_input.equals("knight")){
             return chess_type.KNIGHT;
-        }else if(user_input.contains("ro")){
+        }else if(user_input.equals("rook")){
             return chess_type.ROOK;
-        }else if(user_input.contains("bi")){
+        }else if(user_input.equals("bishop")){
             return chess_type.BISHOP;
-        }else if(user_input.contains("pa")){
+        }else if(user_input.contains("pawn")){
             return chess_type.PAWN;
         }else
             {
-                System.out.println("please enter valid peice");
+                System.out.println("please enter valid piece");
                 getPiece(chess_type.NULL);
             }
             return chess_type.NULL;
