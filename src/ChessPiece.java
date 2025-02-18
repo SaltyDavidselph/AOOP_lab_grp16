@@ -3,7 +3,7 @@ public abstract class ChessPiece {
     protected Color color;
     protected Column y;
     protected int x;
-
+    //hello
     //Default/Empty constructor
     public ChessPiece(){
         name = null;
