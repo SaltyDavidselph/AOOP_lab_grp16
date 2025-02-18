@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //import lab2.AOOP_lab_grp16.src.Pawn;
@@ -9,8 +9,33 @@ import java.util.Scanner;
  * of methods, objects and javas functionality.
  */
 
+ enum PieceType{
+    QUEEN,
+    KING, 
+    BISHOP,
+    ROOK, 
+    PAWN,
+    KNIGHT;
+}
+
+enum Color{
+    BLACK, 
+    WHITE;
+}
+
+enum Column{
+    A,
+    B,
+    C,
+    D,
+    E,
+    F,
+    G,
+    H;
+}
+
 public class Main {
-    public static void main(String[] args) throws IOException{      //added IOexeption
+    public static void main(String[] args){      //added IOexeption
         
         
         //Author: Rafeal C. and David Selph

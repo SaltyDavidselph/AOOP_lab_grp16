@@ -1,10 +1,10 @@
 // Refactored into objects by David Selph
-public class Knight {
+public class Knight extends ChessPiece{
     //an object that is a Knight in chess
     //includes an empty constructor, a constuctor that takes values, setters and getters for the data that needs them,
     // and a method that verifies if it can be moved to a given location
 
-    public Main.chess_type name;
+    /*public Main.chess_type name;
     public String color;
     public String x_cord_str;
     public String y_cord_str;
@@ -48,8 +48,14 @@ public class Knight {
     public void setY_cord_str( String y_cord_str){
         this.y_cord_str = y_cord_str;
         this.y_cord = Integer.parseInt(y_cord_str);
+    }*/
+
+    // constructor that uses super's constructor 
+    public Knight(PieceType name, Color color, Column column, int row){
+        super(name,color,column,row);
     }
 
+    @Override
     public Boolean verify_movement(int[] inputs){
         if (!(((Math.abs(this.x_cord-inputs[0]) == 1)&&(Math.abs(this.y_cord-inputs[1]) == 2))||((Math.abs(this.x_cord-inputs[0]) == 2)&&(Math.abs(this.y_cord-inputs[1]) == 1)))){
             return false;

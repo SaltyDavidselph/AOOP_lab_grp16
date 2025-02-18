@@ -1,10 +1,10 @@
 // Refactored into objects by David Selph
-public class Queen {
+public class Queen extends Rook{
     //an object that is a Queen in chess
     //includes an empty constructor, a constuctor that takes values, setters and getters for the data that needs them,
     // and a method that verifies if it can be moved to a given location
 
-    public Main.chess_type name;
+    /*public Main.chess_type name;
     public String color;
     public String x_cord_str;
     public String y_cord_str;
@@ -48,6 +48,11 @@ public class Queen {
     public void setY_cord_str( String y_cord_str){
         this.y_cord_str = y_cord_str;
         this.y_cord = Integer.parseInt(y_cord_str);
+    }*/
+
+    // constructor uses super's constructor 
+    public Queen(PieceType name, Color color, Column column, int row){
+        super(name, color, column, row);
     }
 
     public Boolean verify_movement(int[] inputs){
