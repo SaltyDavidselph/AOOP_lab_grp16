@@ -1,23 +1,23 @@
 public abstract class ChessPiece {
      PieceType name;
      Color color;
-    protected String y;
-    protected String x;
+    protected Column y;
+    protected Row x;
     
     //Default/Empty constructor
     public ChessPiece(){
         name = null;
         color = null;
         y = null;
-        x = -1;
+        x = null;
     }
 
     //Constructor 
     public ChessPiece(PieceType pieceName, Color color, Column column, Row row){
         this.name = pieceName;
         this.color = color;
-        y = column;
-        x = row;
+        this.y = column;
+        this.x = row;
     }
 
     //Getters 
@@ -28,7 +28,7 @@ public abstract class ChessPiece {
     public Column getColumn(){
         return y;
     }
-    public int getRow(){
+    public Row getRow(){
         return x;
     }
     public PieceType getName(){
@@ -46,7 +46,7 @@ public abstract class ChessPiece {
     public void setColumn(Column column){
        y = column;
     }
-    public void setRow(int row){
+    public void setRow(Row row){
        x = row;
     }
 
