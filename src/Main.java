@@ -1,4 +1,6 @@
+import java.lang.reflect.Array;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 //import lab2.AOOP_lab_grp16.src.Pawn;
@@ -46,154 +48,9 @@ enum Row{
 }
 
 public class Main {
-    public static void main(String[] args){      //added IOexeption
-        
-        
-//        //Author: Rafeal C. and David Selph
-//        boolean term_inner = true;
-//        while(term_inner) {
-//            chess_type user_input_piece = getPiece(chess_type.NULL);
-//            String user_input_color = get_color();
-//
-//            //promp user for start spots
-//            String user_input_x_start = get_user_input_x("starting");
-//            String user_input_y_start = get_user_input_y("starting");
-//
-//
-//
-//            boolean term_inner_inner = true;
-//                while(term_inner_inner) {
-//                    //promp user for end spot
-//                    String user_input_x_end_str = get_user_input_x("target");
-//                    String user_input_y_end_str = get_user_input_y("target");
-//
-//                    int[] int_inputs = {letterToNumber(user_input_x_end_str),Integer.parseInt(user_input_y_end_str)};
-//
-//                    //create the object based on the give information
-//                    switch (user_input_piece) {
-//                        case PAWN:
-//                            Pawn pawn = new Pawn(user_input_color,user_input_x_start,user_input_y_start);
-//                            if (pawn.verify_movement(int_inputs)){
-//                                move_succsess(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            else{
-//                                move_failure(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            break;
-//                        case ROOK:
-//                            Rook rook = new Rook(user_input_color,user_input_x_start,user_input_y_start);
-//                            if (rook.verify_movement(int_inputs)){
-//                                move_succsess(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }else{
-//                                move_failure(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            break;
-//                        case KNIGHT:
-//                            Knight knight = new Knight(user_input_color,user_input_x_start,user_input_y_start);
-//                            if (knight.verify_movement(int_inputs)){
-//                                move_succsess(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }else{
-//                                move_failure(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            break;
-//                        case BISHOP:
-//                            Bishop bishop = new Bishop(user_input_color,user_input_x_start,user_input_y_start);
-//                            if (bishop.verify_movement(int_inputs)){
-//                                move_succsess(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }else{
-//                                move_failure(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            break;
-//                        case QUEEN:Queen queen = new Queen(user_input_color,user_input_x_start,user_input_y_start);
-//                            if (queen.verify_movement(int_inputs)){
-//                                move_succsess(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            else{
-//                                move_failure(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            break;
-//                        case KING:King charlies = new King(user_input_color,user_input_x_start,user_input_y_start);
-//                            if (charlies.verify_movement(int_inputs)){
-//                                move_succsess(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            else{
-//                                move_failure(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-//                            }
-//                            break;
-//                        case NULL:
-//                    }
-//                    //promp user to see if they want to use the same piece and adifferent target OR new piece
-//                    //if new target rerun all of it
-//                    String con = get_user_string("Would you like to test another set of target cords? Yes or No");
-//                    Boolean answer = true;
-//                    while(answer){
-//                        if (con.equals("no")){
-//                            term_inner_inner = false;
-//                            answer = false;
-//                        } else if (con.equals("yes")) {
-//                            answer = false;
-//                        } else {
-//                            con = get_user_string("Please Say: Yes or No");
-//                        }
-//                    }
-//                }
-//            String again = get_user_string("Do you want to pick a new chess piece and starting cord? Yes or No").toLowerCase();
-//                Boolean answer = true;
-//                while(answer){
-//                    if (again.equals("no")){
-//                      term_inner = false;
-//                        answer = false;
-//                    } else if (again.equals("yes")) {
-//                        answer = false;
-//                    } else {
-//                        again = get_user_string("Please only say Yes or No").toLowerCase();
-//                }
-//            }
-//        }
+    public static void main(String[] args){
+
         System.out.println("Goodbye!");
-    }
-
-    //Author: David Selph
-    enum chess_type{
-        PAWN,ROOK,KNIGHT,BISHOP,QUEEN,KING,NULL,
-    }
-
-    //Author:Angel Torres
-    public static String get_user_input_y(String cord_type){
-        Scanner scanner = new Scanner(System.in);
-        String input;
-
-        while (true) {
-            System.out.println("Please enter the y cord "+ cord_type +" position as a number 1-8: ");
-            input = scanner.nextLine().toLowerCase();
-
-            if (input.equals("1") || input.equals("2") || input.equals("3")||input.equals("4")||input.equals("5")||
-                    input.equals("6")||input.equals("7")||input.equals("8")) {
-                return input;
-            } else {
-                System.out.println("Input not approved, try again.");
-            }
-        }
-    }
-
-    //Author: Angel Torres
-    public static String get_user_input_x(String cord_type){
-
-        Scanner scanner = new Scanner(System.in);
-        String input;
-
-        while (true) {
-            System.out.println("Please enter the x cord " + cord_type + " position as a letter a-h:  ");
-            input = scanner.nextLine().toLowerCase();
-
-            if
-            (input.equals("a") || input.equals("b") || input.equals("c")||input.equals("d")||input.equals("e")||
-                    input.equals("f")||input.equals("g")||input.equals("h")) {
-                return input;
-            } else {
-                System.out.println("Input not approved, try again.");
-            }
-        }
     }
 
     //Author:David Selph
@@ -201,7 +58,7 @@ public class Main {
     //Convert the letter corresponding to the x position into an integer value
     public static int letterToNumber(Column letter) {
         return switch (letter){
-            case  A-> 1;
+            case A-> 1;
             case B -> 2;
             case C -> 3;
             case D -> 4;
@@ -213,9 +70,79 @@ public class Main {
         };
     }
 
+    private boolean check_pieces(List<ChessPiece> user_pieces){
+        //this kinda sucks a lot a bit
+
+        boolean queen = false;
+        boolean king = false;
+        boolean bishop = false;
+        boolean rook = false;
+        boolean pawn = false;
+        boolean knight = false;
+
+        for (ChessPiece piece : user_pieces ){
+            switch (piece.name){
+                case QUEEN: {
+                    queen = true;
+                }
+                case KING: {
+                    king = true;
+                }
+                case BISHOP: {
+                    bishop = true;
+                }
+                case ROOK: {
+                    rook = true;
+                }
+                case PAWN: {
+                    pawn = true;
+                }
+                case KNIGHT: {
+                    knight = true;
+                }
+            }
+        }
+
+        if(queen && king && bishop && rook && pawn && knight){
+            return true;}
+        else {
+            return false;
+        }
+    }
+
+    private ChessPiece get_user_chess_piece(){
+        PieceType pt = getPiece();
+        Color color = get_color();
+        Column col = get_user_input_starting_col(color,pt);
+        Row row = get_user_input_starting_row(color,pt);
+        while (true) {
+            switch (pt) {
+                case QUEEN: {
+                    return new Queen(color, col, row);
+                }
+                case KING: {
+                    return new King(color, col, row);
+                }
+                case BISHOP: {
+                    return new Bishop(color, col, row);
+                }
+                case ROOK: {
+                    return new Rook(color, col, row);
+                }
+                case PAWN: {
+                    return new Pawn(color, col, row);
+                }
+                case KNIGHT: {
+                    return new Knight(color, col, row);
+                }
+            }
+        }
+    }
+
 
 /**
  * get the next string input from user
+ * sanitize it with lowercase
  * @return
  */
 //Author:Angel Torres
@@ -238,38 +165,33 @@ public class Main {
      * @return enum of correct peice
      * Author: Angel Torres
      */
-    public static chess_type getPiece( chess_type type){
-
-        try{
+    public static PieceType getPiece( ){
         String user_input = get_user_string("what piece would you like to test?");
-
-        if(user_input.equals("queen")){
-            return chess_type.QUEEN;
-        }else if(user_input.equals("king")){
-            return chess_type.KING;
-        }else if(user_input.equals("knight")){
-            return chess_type.KNIGHT;
-        }else if(user_input.equals("rook")){
-            return chess_type.ROOK;
-        }else if(user_input.equals("bishop")){
-            return chess_type.BISHOP;
-        }else if(user_input.contains("pawn")){
-            return chess_type.PAWN;
-        }else
-            {
-                System.out.println("please enter valid piece");
-                getPiece(chess_type.NULL);
+        while (true) {
+            try {
+                if (user_input.equals("queen")) {
+                    return PieceType.QUEEN;
+                } else if (user_input.equals("king")) {
+                    return PieceType.KING;
+                } else if (user_input.equals("knight")) {
+                    return PieceType.KNIGHT;
+                } else if (user_input.equals("rook")) {
+                    return PieceType.ROOK;
+                } else if (user_input.equals("bishop")) {
+                    return PieceType.BISHOP;
+                } else if (user_input.contains("pawn")) {
+                    return PieceType.PAWN;
+                } else {
+                    user_input = get_user_string("Please Try again with a real chess piece not " + user_input);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Not valid input");
             }
-            return chess_type.NULL;
-        }
-        catch(Exception e){
-            throw new RuntimeException("Not valid input");
         }
     }
     public static Color get_color(){
         String input =  get_user_string("Would you like to be the White or Black Pieces?");
-        boolean flag = true;
-        while(flag){
+        while(true){
             switch(input){
                 case "white" -> {
                     //if the user gave a string of white return the white enum
@@ -285,9 +207,112 @@ public class Main {
                 }
             }
         }
-        //if they have broken the while loop they shall be white
-        //todo this seems like a place we could have a bug
-        return Color.WHITE;
+    }
+    //Author:Angel Torres
+    public static Row get_user_input_starting_row( Color color, PieceType pieceType){
+        String input =  get_user_string("What is the starting Row of this "+ color + pieceType +"?");
+        return strToRow(input);
+    }
+
+    public static Row get_user_input_target_row( ){
+        String input =  get_user_string("What is the target Row of these chess pieces?");
+        return strToRow(input);
+    }
+
+    private static Row strToRow(String input){
+        while(true){
+            switch(input){
+                case "1" -> {
+                    //if the user gave a string of one return the one enum
+                    return Row.ONE;
+                }
+                case "2" -> {
+                    //if the user gave a string of two return the two enum
+                    return Row.TWO;
+                }
+                case "3" -> {
+                    //if the user gave a string of three return the three enum
+                    return Row.THREE;
+                }
+                case "4" -> {
+                    //if the user gave a string of four return the four enum
+                    return Row.FOUR;
+                }
+                case "5" -> {
+                    //if the user gave a string of five return the five enum
+                    return Row.FIVE;
+                }
+                case "6" -> {
+                    //if the user gave a string of six return the six enum
+                    return Row.SIX;
+                }
+                case "7" -> {
+                    //if the user gave a string of seven return the seven enum
+                    return Row.SEVEN;
+                }
+                case "8" -> {
+                    //if the user gave a string of eight return the eight enum
+                    return Row.EIGHT;
+                }
+                default -> {
+                    //keep going and get another input
+                    input = get_user_string("Please stop this silliness and input a single number 1-8");
+                }
+            }
+        }
+    }
+
+    //Author: Angel Torres
+    public static Column get_user_input_starting_col( Color color, PieceType pieceType){
+        String input =  get_user_string("What is the starting Column of this "+ color + pieceType +"?");
+        return strToCol(input);
+    }
+    public static Column get_user_input_target_col(){
+        String input =  get_user_string("What is the Target Column of this montly crew of chess pieces?");
+        return strToCol(input);
+    }
+
+    private static Column strToCol(String input){
+        while(true){
+            switch(input){
+                case "a" -> {
+                    //if the user gave a string of one return the one enum
+                    return Column.A;
+                }
+                case "b" -> {
+                    //if the user gave a string of two return the two enum
+                    return Column.B;
+                }
+                case "c" -> {
+                    //if the user gave a string of three return the three enum
+                    return Column.C;
+                }
+                case "d" -> {
+                    //if the user gave a string of four return the four enum
+                    return Column.D;
+                }
+                case "e" -> {
+                    //if the user gave a string of five return the five enum
+                    return Column.E;
+                }
+                case "f" -> {
+                    //if the user gave a string of six return the six enum
+                    return Column.F;
+                }
+                case "g" -> {
+                    //if the user gave a string of seven return the seven enum
+                    return Column.G;
+                }
+                case "h" -> {
+                    //if the user gave a string of eight return the eight enum
+                    return Column.H;
+                }
+                default -> {
+                    //keep going and get another input
+                    input = get_user_string("Please stop this silliness and input a letter a-h");
+                }
+            }
+        }
     }
 
     //helper methods to reduce bulk
@@ -295,14 +320,14 @@ public class Main {
      * Print a messge that the desired move is possible
      * Author: Angel Torres, David Selph
      */
-    public static void move_succsess(chess_type type, String color, String x_start, String y_start, String x_end, String y_end){
+    public static void move_succsess(PieceType type, String color, String x_start, String y_start, String x_end, String y_end){
         System.out.println("The "+ color + " "+ type+" can move from (" + x_start +"," + y_start +") to (" + x_end + "," + y_end + ")"  );
     }
     /**
      * Print a messge that the desired move is NOT possible
      * Author: Angel Torres, David Selph
      */
-    public static void move_failure(chess_type type, String color, String x_start, String y_start, String x_end, String y_end){
+    public static void move_failure(PieceType type, String color, String x_start, String y_start, String x_end, String y_end){
         System.out.println("The " + color + " "+ type+" can NOT move from (" + x_start +"," + y_start +") to (" + x_end + "," + y_end + ")"    );
     }
 
