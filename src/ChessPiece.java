@@ -1,8 +1,8 @@
 public abstract class ChessPiece {
-    protected PieceType name;
-    protected Color color;
-    protected Column y;
-    protected int x;
+     PieceType name;
+     Color color;
+    protected String y;
+    protected String x;
     
     //Default/Empty constructor
     public ChessPiece(){
@@ -13,7 +13,7 @@ public abstract class ChessPiece {
     }
 
     //Constructor 
-    public ChessPiece(PieceType pieceName, Color color, Column column, int row){
+    public ChessPiece(PieceType pieceName, Color color, Column column, Row row){
         this.name = pieceName;
         this.color = color;
         y = column;
@@ -55,6 +55,8 @@ public abstract class ChessPiece {
      the method would have how the pawn movement is checked or validated. Make a note that each piece class
      needs to override this method. Therefore all pieces will use inheritance to obtain this method.
      */
-     public abstract boolean verify_movement(int newY, int newX){}
+     public boolean verify_movement(int newY, int newX){
+         return false;
+     }
     
 }

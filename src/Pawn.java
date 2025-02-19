@@ -4,59 +4,19 @@ public class Pawn extends ChessPiece{
     //includes an empty constructor, a constuctor that takes values, setters and getters for the data that needs them,
     // and a method that verifies if it can be moved to a given location
 
-    /*public Main.chess_type name;
-    public String color;
-    public String x_cord_str;
-    public String y_cord_str;
+    // calls constructor from super
     public int x_cord;
     public int y_cord;
 
-
-    public Pawn(){
-    }
-    public Pawn( String color, String x_cord_str, String y_cord_str) {
-        this.name = Main.chess_type.PAWN;
-        this.color = color;
-        this.x_cord_str = x_cord_str;
-        this.y_cord_str = y_cord_str;
-        this.x_cord = Main.letterToNumber(x_cord_str);
-        this.y_cord = Integer.parseInt(y_cord_str);
-    }
-    public Main.chess_type getName(){
-        return this.name;
-    }
-    public String getColor() {
-        return this.color;
-    }
-    public String getX_cord_str() {
-        return this.x_cord_str;
-    }
-    public String getY_cord_str() {
-        return this.y_cord_str;
-    }
-    public int getx_cord(){
-        return this.x_cord;
-    }
-    public int gety_cord(){
-        return this.y_cord;
-    }
-
-    public void setX_cord_str( String x_cord_str){
-        this.x_cord_str = x_cord_str;
-        this.x_cord = Main.letterToNumber(x_cord_str);
-    }
-    public void setY_cord_str( String y_cord_str){
-        this.y_cord_str = y_cord_str;
-        this.y_cord = Integer.parseInt(y_cord_str);
-    }*/
-
-    public Pawn(PieceType name, Color color, Column column, int row) {
-        super(name, color, column, row);
+    public Pawn( Color color, Column col, Row row) {
+        super(PieceType.BISHOP, color, col,row );
+        this.x_cord = Main.letterToNumber(col);
+        this.y_cord = row.getValue();
     }
 
     @Override
-    public Boolean verify_movement(int[] inputs){
-        if(this.x_cord != inputs[0] ||  (inputs[1] - this.y_cord) > 1 || (inputs[1] - this.y_cord) < 1) {
+    public boolean verify_movement(int x, int y){
+        if(this.x_cord != x ||  (y - this.y_cord) > 1 || (y - this.y_cord) < 1) {
             return false;
         }
         else {

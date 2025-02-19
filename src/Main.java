@@ -34,111 +34,122 @@ enum Column{
     H;
 }
 
+enum Row{
+     ONE(1),TWO(2),THREE(3),FOUR(4),FIVE(5),SIX(6),SEVEN(7),EIGHT(8);
+     private int value;
+     Row(int value){
+         this.value = value;
+     }
+    public int getValue() {
+        return value;
+    }
+}
+
 public class Main {
     public static void main(String[] args){      //added IOexeption
         
         
-        //Author: Rafeal C. and David Selph
-        boolean term_inner = true;
-        while(term_inner) {
-            chess_type user_input_piece = getPiece(chess_type.NULL);
-            String user_input_color = get_color();
-
-            //promp user for start spots
-            String user_input_x_start = get_user_input_x("starting");
-            String user_input_y_start = get_user_input_y("starting");
-
-           
-
-            boolean term_inner_inner = true;
-                while(term_inner_inner) {
-                    //promp user for end spot
-                    String user_input_x_end_str = get_user_input_x("target");
-                    String user_input_y_end_str = get_user_input_y("target");
-
-                    int[] int_inputs = {letterToNumber(user_input_x_end_str),Integer.parseInt(user_input_y_end_str)};
-
-                    //create the object based on the give information 
-                    switch (user_input_piece) {
-                        case PAWN:
-                            Pawn pawn = new Pawn(user_input_color,user_input_x_start,user_input_y_start);
-                            if (pawn.verify_movement(int_inputs)){
-                                move_succsess(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            else{
-                                move_failure(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            break;
-                        case ROOK:
-                            Rook rook = new Rook(user_input_color,user_input_x_start,user_input_y_start);
-                            if (rook.verify_movement(int_inputs)){
-                                move_succsess(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }else{
-                                move_failure(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            break;
-                        case KNIGHT:
-                            Knight knight = new Knight(user_input_color,user_input_x_start,user_input_y_start);
-                            if (knight.verify_movement(int_inputs)){
-                                move_succsess(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }else{
-                                move_failure(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            break;
-                        case BISHOP:
-                            Bishop bishop = new Bishop(user_input_color,user_input_x_start,user_input_y_start);
-                            if (bishop.verify_movement(int_inputs)){
-                                move_succsess(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }else{
-                                move_failure(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            break;
-                        case QUEEN:Queen queen = new Queen(user_input_color,user_input_x_start,user_input_y_start);
-                            if (queen.verify_movement(int_inputs)){
-                                move_succsess(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            else{
-                                move_failure(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            break;
-                        case KING:King charlies = new King(user_input_color,user_input_x_start,user_input_y_start);
-                            if (charlies.verify_movement(int_inputs)){
-                                move_succsess(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            else{
-                                move_failure(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
-                            }
-                            break;
-                        case NULL:
-                    }
-                    //promp user to see if they want to use the same piece and adifferent target OR new piece 
-                    //if new target rerun all of it 
-                    String con = get_user_string("Would you like to test another set of target cords? Yes or No");
-                    Boolean answer = true;
-                    while(answer){
-                        if (con.equals("no")){
-                            term_inner_inner = false;
-                            answer = false;
-                        } else if (con.equals("yes")) {
-                            answer = false;
-                        } else {
-                            con = get_user_string("Please Say: Yes or No");
-                        }
-                    }
-                }
-            String again = get_user_string("Do you want to pick a new chess piece and starting cord? Yes or No").toLowerCase();
-                Boolean answer = true;
-                while(answer){
-                    if (again.equals("no")){
-                      term_inner = false;
-                        answer = false;
-                    } else if (again.equals("yes")) {
-                        answer = false;
-                    } else {
-                        again = get_user_string("Please only say Yes or No").toLowerCase();
-                }
-            }
-        }
+//        //Author: Rafeal C. and David Selph
+//        boolean term_inner = true;
+//        while(term_inner) {
+//            chess_type user_input_piece = getPiece(chess_type.NULL);
+//            String user_input_color = get_color();
+//
+//            //promp user for start spots
+//            String user_input_x_start = get_user_input_x("starting");
+//            String user_input_y_start = get_user_input_y("starting");
+//
+//
+//
+//            boolean term_inner_inner = true;
+//                while(term_inner_inner) {
+//                    //promp user for end spot
+//                    String user_input_x_end_str = get_user_input_x("target");
+//                    String user_input_y_end_str = get_user_input_y("target");
+//
+//                    int[] int_inputs = {letterToNumber(user_input_x_end_str),Integer.parseInt(user_input_y_end_str)};
+//
+//                    //create the object based on the give information
+//                    switch (user_input_piece) {
+//                        case PAWN:
+//                            Pawn pawn = new Pawn(user_input_color,user_input_x_start,user_input_y_start);
+//                            if (pawn.verify_movement(int_inputs)){
+//                                move_succsess(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            else{
+//                                move_failure(chess_type.PAWN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            break;
+//                        case ROOK:
+//                            Rook rook = new Rook(user_input_color,user_input_x_start,user_input_y_start);
+//                            if (rook.verify_movement(int_inputs)){
+//                                move_succsess(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }else{
+//                                move_failure(chess_type.ROOK , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            break;
+//                        case KNIGHT:
+//                            Knight knight = new Knight(user_input_color,user_input_x_start,user_input_y_start);
+//                            if (knight.verify_movement(int_inputs)){
+//                                move_succsess(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }else{
+//                                move_failure(chess_type.KNIGHT , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            break;
+//                        case BISHOP:
+//                            Bishop bishop = new Bishop(user_input_color,user_input_x_start,user_input_y_start);
+//                            if (bishop.verify_movement(int_inputs)){
+//                                move_succsess(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }else{
+//                                move_failure(chess_type.BISHOP , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            break;
+//                        case QUEEN:Queen queen = new Queen(user_input_color,user_input_x_start,user_input_y_start);
+//                            if (queen.verify_movement(int_inputs)){
+//                                move_succsess(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            else{
+//                                move_failure(chess_type.QUEEN , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            break;
+//                        case KING:King charlies = new King(user_input_color,user_input_x_start,user_input_y_start);
+//                            if (charlies.verify_movement(int_inputs)){
+//                                move_succsess(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            else{
+//                                move_failure(chess_type.KING , user_input_color,user_input_x_start,user_input_y_start,user_input_x_end_str,user_input_y_end_str);
+//                            }
+//                            break;
+//                        case NULL:
+//                    }
+//                    //promp user to see if they want to use the same piece and adifferent target OR new piece
+//                    //if new target rerun all of it
+//                    String con = get_user_string("Would you like to test another set of target cords? Yes or No");
+//                    Boolean answer = true;
+//                    while(answer){
+//                        if (con.equals("no")){
+//                            term_inner_inner = false;
+//                            answer = false;
+//                        } else if (con.equals("yes")) {
+//                            answer = false;
+//                        } else {
+//                            con = get_user_string("Please Say: Yes or No");
+//                        }
+//                    }
+//                }
+//            String again = get_user_string("Do you want to pick a new chess piece and starting cord? Yes or No").toLowerCase();
+//                Boolean answer = true;
+//                while(answer){
+//                    if (again.equals("no")){
+//                      term_inner = false;
+//                        answer = false;
+//                    } else if (again.equals("yes")) {
+//                        answer = false;
+//                    } else {
+//                        again = get_user_string("Please only say Yes or No").toLowerCase();
+//                }
+//            }
+//        }
         System.out.println("Goodbye!");
     }
 
@@ -188,16 +199,16 @@ public class Main {
     //Author:David Selph
     //Takes the input from the user that corresponds to the x coordinate as a parameter
     //Convert the letter corresponding to the x position into an integer value
-    public static int letterToNumber(String letter) {
+    public static int letterToNumber(Column letter) {
         return switch (letter){
-            case "a" -> 1;
-            case "b" -> 2;
-            case "c" -> 3;
-            case "d" -> 4;
-            case "e" -> 5;
-            case "f" -> 6;
-            case "g" -> 7;
-            case "h" -> 8;
+            case  A-> 1;
+            case B -> 2;
+            case C -> 3;
+            case D -> 4;
+            case E -> 5;
+            case F -> 6;
+            case G -> 7;
+            case H -> 8;
             default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
         };
     }
