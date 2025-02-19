@@ -266,8 +266,28 @@ public class Main {
             throw new RuntimeException("Not valid input");
         }
     }
-    public static String get_color(){    
-        return get_user_string("What color would you like to be?");    
+    public static Color get_color(){
+        String input =  get_user_string("Would you like to be the White or Black Pieces?");
+        boolean flag = true;
+        while(flag){
+            switch(input){
+                case "white" -> {
+                    //if the user gave a string of white return the white enum
+                    return Color.WHITE;
+                }
+                case "black" -> {
+                    //if the user gave a string of black return the black enum
+                    return Color.BLACK;
+                }
+                default -> {
+                    //keep going and get another input
+                    input = get_user_string("Please Sir I want a Color... White or Black");
+                }
+            }
+        }
+        //if they have broken the while loop they shall be white
+        //todo this seems like a place we could have a bug
+        return Color.WHITE;
     }
 
     //helper methods to reduce bulk
