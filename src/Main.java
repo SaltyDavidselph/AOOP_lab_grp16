@@ -49,6 +49,12 @@ enum Row{
 
 public class Main {
     public static void main(String[] args){
+        //start by running a loop over getuserpieces with the control being check_piece
+        //each piece given stored in an array until we have one of each piece
+
+        //once that is done we need to get the target pos
+
+        //loop over the array from the inputs and polymorph a chess piece
 
         System.out.println("Goodbye!");
     }
