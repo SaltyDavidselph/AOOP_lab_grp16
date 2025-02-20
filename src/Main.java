@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -50,11 +51,36 @@ enum Row{
 public class Main {
     public static void main(String[] args){
         //start by running a loop over getuserpieces with the control being check_piece
-        //each piece given stored in an array until we have one of each piece
+
+        boolean all_parts = true;
+        List<ChessPiece> pieces = new ArrayList<ChessPiece>();
+
+        while (all_parts){
+            ChessPiece piece = get_user_chess_piece();
+            pieces.add( piece );
+            //each piece given stored in an array until we have one of each piece
+            if( check_pieces(pieces)){
+                all_parts = false;
+            }else{
+            }
+        }
+
+        System.out.println("Congratulations! You gave one of each piece!! \nOnto where they are gonna move!");
 
         //once that is done we need to get the target pos
+        Column target_col = get_user_input_target_col();
+        Row target_row = get_user_input_target_row();
 
         //loop over the array from the inputs and polymorph a chess piece
+        for(ChessPiece piece : pieces){
+            if(piece.verify_movement(letterToNumber(target_col),target_row.getValue())){
+                move_succsess(piece,target_col,target_row);
+            }else{
+                move_failure(piece,target_col,target_row);
+            }
+        }
+
+
 
         System.out.println("Goodbye!");
     }
@@ -76,7 +102,7 @@ public class Main {
         };
     }
 
-    private boolean check_pieces(List<ChessPiece> user_pieces){
+    private static boolean check_pieces(List<ChessPiece> user_pieces){
         //this kinda sucks a lot a bit
 
         boolean queen = false;
@@ -90,21 +116,27 @@ public class Main {
             switch (piece.name){
                 case QUEEN: {
                     queen = true;
+                    break;
                 }
                 case KING: {
                     king = true;
+                    break;
                 }
                 case BISHOP: {
                     bishop = true;
+                    break;
                 }
                 case ROOK: {
                     rook = true;
+                    break;
                 }
                 case PAWN: {
                     pawn = true;
+                    break;
                 }
                 case KNIGHT: {
                     knight = true;
+                    break;
                 }
             }
         }
@@ -116,7 +148,7 @@ public class Main {
         }
     }
 
-    private ChessPiece get_user_chess_piece(){
+    private static ChessPiece get_user_chess_piece(){
         PieceType pt = getPiece();
         Color color = get_color();
         Column col = get_user_input_starting_col(color,pt);
@@ -216,7 +248,7 @@ public class Main {
     }
     //Author:Angel Torres
     public static Row get_user_input_starting_row( Color color, PieceType pieceType){
-        String input =  get_user_string("What is the starting Row of this "+ color + pieceType +"?");
+        String input =  get_user_string("What is the starting Row of this "+ color + " "+ pieceType +"?");
         return strToRow(input);
     }
 
@@ -270,7 +302,7 @@ public class Main {
 
     //Author: Angel Torres
     public static Column get_user_input_starting_col( Color color, PieceType pieceType){
-        String input =  get_user_string("What is the starting Column of this "+ color + pieceType +"?");
+        String input =  get_user_string("What is the starting Column of this "+ color + " " + pieceType +"?");
         return strToCol(input);
     }
     public static Column get_user_input_target_col(){
@@ -326,15 +358,15 @@ public class Main {
      * Print a messge that the desired move is possible
      * Author: Angel Torres, David Selph
      */
-    public static void move_succsess(PieceType type, String color, String x_start, String y_start, String x_end, String y_end){
-        System.out.println("The "+ color + " "+ type+" can move from (" + x_start +"," + y_start +") to (" + x_end + "," + y_end + ")"  );
+    public static void move_succsess(ChessPiece chessPiece, Column x_end, Row y_end){
+        System.out.println("The "+ chessPiece.getColor() + " "+ chessPiece.getName()+" can move from (" + chessPiece.getColumn() +"," + chessPiece.getRow() +") to (" + x_end + "," + y_end + ")"  );
     }
     /**
      * Print a messge that the desired move is NOT possible
      * Author: Angel Torres, David Selph
      */
-    public static void move_failure(PieceType type, String color, String x_start, String y_start, String x_end, String y_end){
-        System.out.println("The " + color + " "+ type+" can NOT move from (" + x_start +"," + y_start +") to (" + x_end + "," + y_end + ")"    );
+    public static void move_failure(ChessPiece chessPiece,  Column x_end, Row y_end){
+        System.out.println("The " + chessPiece.getColor() + " "+ chessPiece.getName() + " can  NOT move from (" + chessPiece.getColumn() + "," + chessPiece.getRow() +") to (" + x_end + "," + y_end + ")"    );
     }
 
 }

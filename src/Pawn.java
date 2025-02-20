@@ -9,7 +9,7 @@ public class Pawn extends ChessPiece{
     public int y_cord;
 
     public Pawn( Color color, Column col, Row row) {
-        super(PieceType.BISHOP, color, col,row );
+        super(PieceType.PAWN, color, col,row );
         this.x_cord = Main.letterToNumber(col);
         this.y_cord = row.getValue();
     }

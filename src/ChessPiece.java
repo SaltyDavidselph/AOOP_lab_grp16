@@ -55,8 +55,6 @@ public abstract class ChessPiece {
      the method would have how the pawn movement is checked or validated. Make a note that each piece class
      needs to override this method. Therefore all pieces will use inheritance to obtain this method.
      */
-     public boolean verify_movement(int newY, int newX){
-         return false;
-     }
+     abstract boolean verify_movement(int newY, int newX);
     
 }

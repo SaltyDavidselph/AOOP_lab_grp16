@@ -9,7 +9,7 @@ public class Queen extends ChessPiece{
     public int y_cord;
 
     public Queen( Color color, Column col, Row row) {
-        super(PieceType.BISHOP, color, col,row );
+        super(PieceType.QUEEN, color, col,row );
         this.x_cord = Main.letterToNumber(col);
         this.y_cord = row.getValue();
     }

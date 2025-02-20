@@ -9,7 +9,7 @@ public class Rook extends ChessPiece {
     public int y_cord;
 
     public Rook( Color color, Column col, Row row) {
-        super(PieceType.BISHOP, color, col,row );
+        super(PieceType.ROOK, color, col,row );
         this.x_cord = Main.letterToNumber(col);
         this.y_cord = row.getValue();
     }

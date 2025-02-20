@@ -9,7 +9,7 @@ public class Knight extends ChessPiece{
     public int y_cord;
 
     public Knight( Color color, Column col, Row row) {
-        super(PieceType.BISHOP, color, col,row );
+        super(PieceType.KNIGHT, color, col,row );
         this.x_cord = Main.letterToNumber(col);
         this.y_cord = row.getValue();
     }
