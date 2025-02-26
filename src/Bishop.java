@@ -1,3 +1,5 @@
+//AUTHORS - David Selph & Rafael Carmona
+//Abstraction application and Override concepts by Rafael Carmona
 // Refactored into objects by David Selph
 public class Bishop extends ChessPiece {
     //an object that is a Bishop in chess

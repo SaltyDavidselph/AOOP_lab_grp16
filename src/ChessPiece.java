@@ -1,6 +1,8 @@
+//AUTHORS - Rafael Carmona & David Selph
+
 public abstract class ChessPiece {
-     PieceType name;
-     Color color;
+    PieceType name;
+    Color color;
     protected Column y;
     protected Row x;
     

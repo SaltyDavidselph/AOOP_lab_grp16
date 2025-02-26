@@ -1,4 +1,6 @@
-// Refactored into objects by David Selph
+//AUTHORS - David Selph & Rafael Carmona
+//Abstraction application and Override concepts by Rafael Carmona
+//Refactored into objects by David Selph
 public class King extends ChessPiece {
     //an object that is a pawn in chess
     //includes an empty constructor, a constuctor that takes values, setters and getters for the data that needs them,

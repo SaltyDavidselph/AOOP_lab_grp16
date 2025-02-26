@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 //import lab2.AOOP_lab_grp16.src.Pawn;
 
-/*LAB2 Project. AUTHORS - David Selph, Angel Torres & Rafael Carmona
+/*LAB3 Project. AUTHORS - David Selph
  * Description of program.
- *  - Validate user's input about the movement of a chess piece (in this case, official chess rules are not applicable) through the use
- * of methods, objects and javas functionality.
+ *  -This program prompts the user to enter six chess pieces with their corresponding information (name, color & starting position)
+ * to move all of the pieces to a designated position (official chess rules dont apply).
  */
 
  enum PieceType{
@@ -359,14 +359,14 @@ public class Main {
      * Author: Angel Torres, David Selph
      */
     public static void move_succsess(ChessPiece chessPiece, Column x_end, Row y_end){
-        System.out.println("The "+ chessPiece.getColor() + " "+ chessPiece.getName()+" can move from (" + chessPiece.getColumn() +"," + chessPiece.getRow() +") to (" + x_end + "," + y_end + ")"  );
+        System.out.println("The "+ chessPiece.getColor() + " "+ chessPiece.getName()+" can move from (" + chessPiece.getColumn() +"," + chessPiece.getRow() +") to (" + x_end + "," + y_end.getValue() + ")"  );
     }
     /**
      * Print a messge that the desired move is NOT possible
      * Author: Angel Torres, David Selph
      */
     public static void move_failure(ChessPiece chessPiece,  Column x_end, Row y_end){
-        System.out.println("The " + chessPiece.getColor() + " "+ chessPiece.getName() + " can  NOT move from (" + chessPiece.getColumn() + "," + chessPiece.getRow() +") to (" + x_end + "," + y_end + ")"    );
+        System.out.println("The " + chessPiece.getColor() + " "+ chessPiece.getName() + " can  NOT move from (" + chessPiece.getColumn() + "," + chessPiece.getRow() +") to (" + x_end + "," + y_end.getValue() + ")"    );
     }
 
 }

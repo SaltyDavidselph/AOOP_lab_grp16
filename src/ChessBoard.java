@@ -1,3 +1,5 @@
+//AUTHORS - Angel Torres
+
 public class ChessBoard{
     private static int MAX_ROW = 8;
     private static int MIN_ROW = 1;
