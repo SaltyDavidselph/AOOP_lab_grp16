@@ -1,6 +1,8 @@
-//AUTHORS - Angel Torres
+package lab2.AOOP_lab_grp16.src.Classes;
+import lab2.AOOP_lab_grp16.src.Interfaces.IntChessBoard;
 
-public class ChessBoard{
+public class ChessBoard implements IntChessBoard{
+
     private static int MAX_ROW = 8;
     private static int MIN_ROW = 1;
     private static char MAX_COL = 'h';
@@ -8,13 +10,9 @@ public class ChessBoard{
     ChessBoard(){
 
     }
-/**
- * checks weather given column and row are within the chessboard
- * @param column 
- * @param row
- * @return
- */
-    public boolean withinChessboard(char column, int row){
+   //Needs implementation
+    @Override
+    public boolean verifyCoordinate(char column, int row){
         if((column > MAX_COL)||(column < MIN_COL)){
             return false;
         }
@@ -22,5 +20,5 @@ public class ChessBoard{
             return false;
         }
         return true;
-    } 
+    }
 }

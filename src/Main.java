@@ -1,52 +1,16 @@
-import java.lang.reflect.Array;
+
+
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-//import lab2.AOOP_lab_grp16.src.Pawn;
+import lab2.AOOP_lab_grp16.src.Classes.*;
 
 /*LAB3 Project. AUTHORS - David Selph
  * Description of program.
  *  -This program prompts the user to enter six chess pieces with their corresponding information (name, color & starting position)
  * to move all of the pieces to a designated position (official chess rules dont apply).
  */
-
- enum PieceType{
-    QUEEN,
-    KING, 
-    BISHOP,
-    ROOK, 
-    PAWN,
-    KNIGHT;
-}
-
-enum Color{
-    BLACK, 
-    WHITE;
-}
-
-enum Column{
-    A,
-    B,
-    C,
-    D,
-    E,
-    F,
-    G,
-    H;
-}
-
-enum Row{
-     ONE(1),TWO(2),THREE(3),FOUR(4),FIVE(5),SIX(6),SEVEN(7),EIGHT(8);
-     private int value;
-     Row(int value){
-         this.value = value;
-     }
-    public int getValue() {
-        return value;
-    }
-}
 
 public class Main {
     public static void main(String[] args){
@@ -73,7 +37,7 @@ public class Main {
 
         //loop over the array from the inputs and polymorph a chess piece
         for(ChessPiece piece : pieces){
-            if(piece.verify_movement(letterToNumber(target_col),target_row.getValue())){
+            if(piece.moveTo(letterToNumber(target_col),target_row.getValue())){
                 move_succsess(piece,target_col,target_row);
             }else{
                 move_failure(piece,target_col,target_row);
@@ -104,7 +68,6 @@ public class Main {
 
     private static boolean check_pieces(List<ChessPiece> user_pieces){
         //this kinda sucks a lot a bit
-
         boolean queen = false;
         boolean king = false;
         boolean bishop = false;
@@ -113,7 +76,7 @@ public class Main {
         boolean knight = false;
 
         for (ChessPiece piece : user_pieces ){
-            switch (piece.name){
+            switch (piece.getName()){
                 case QUEEN: {
                     queen = true;
                     break;
@@ -149,17 +112,17 @@ public class Main {
     }
 
     private static ChessPiece get_user_chess_piece(){
-        PieceType pt = getPiece();
+        PieceName pt = getPiece();
         Color color = get_color();
         Column col = get_user_input_starting_col(color,pt);
         Row row = get_user_input_starting_row(color,pt);
         while (true) {
             switch (pt) {
                 case QUEEN: {
-                    return new Queen(color, col, row);
+                    return new Queen(PieceName.QUEEN,color, col, row);
                 }
                 case KING: {
-                    return new King(color, col, row);
+                    return new King(PieceName.KING, color, col, row);
                 }
                 case BISHOP: {
                     return new Bishop(color, col, row);
@@ -203,22 +166,22 @@ public class Main {
      * @return enum of correct peice
      * Author: Angel Torres
      */
-    public static PieceType getPiece( ){
+    public static PieceName getPiece( ){
         String user_input = get_user_string("what piece would you like to test?");
         while (true) {
             try {
                 if (user_input.equals("queen")) {
-                    return PieceType.QUEEN;
+                    return PieceName.QUEEN;
                 } else if (user_input.equals("king")) {
-                    return PieceType.KING;
+                    return PieceName.KING;
                 } else if (user_input.equals("knight")) {
-                    return PieceType.KNIGHT;
+                    return PieceName.KNIGHT;
                 } else if (user_input.equals("rook")) {
-                    return PieceType.ROOK;
+                    return PieceName.ROOK;
                 } else if (user_input.equals("bishop")) {
-                    return PieceType.BISHOP;
+                    return PieceName.BISHOP;
                 } else if (user_input.contains("pawn")) {
-                    return PieceType.PAWN;
+                    return PieceName.PAWN;
                 } else {
                     user_input = get_user_string("Please Try again with a real chess piece not " + user_input);
                 }
@@ -247,7 +210,7 @@ public class Main {
         }
     }
     //Author:Angel Torres
-    public static Row get_user_input_starting_row( Color color, PieceType pieceType){
+    public static Row get_user_input_starting_row( Color color, PieceName pieceType){
         String input =  get_user_string("What is the starting Row of this "+ color + " "+ pieceType +"?");
         return strToRow(input);
     }
@@ -301,7 +264,7 @@ public class Main {
     }
 
     //Author: Angel Torres
-    public static Column get_user_input_starting_col( Color color, PieceType pieceType){
+    public static Column get_user_input_starting_col( Color color, PieceName pieceType){
         String input =  get_user_string("What is the starting Column of this "+ color + " " + pieceType +"?");
         return strToCol(input);
     }
