@@ -1,5 +1,5 @@
-package lab2.AOOP_lab_grp16.src.Classes;
-import lab2.AOOP_lab_grp16.src.Interfaces.IntChessBoard;
+package Classes;
+import Interfaces.IntChessBoard;
 
 public class ChessBoard implements IntChessBoard{
 

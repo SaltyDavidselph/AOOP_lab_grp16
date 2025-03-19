@@ -2,7 +2,7 @@
 * 9. Create class king which extends Queen
  */
 
-package lab2.AOOP_lab_grp16.src.Classes;
+package Classes;
 
 public class King extends Queen{
     public King(PieceName pieceName, Color color ,Column corX, Row row){

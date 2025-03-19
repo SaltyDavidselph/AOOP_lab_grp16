@@ -3,8 +3,9 @@
 * but does not implement method moveTo.
 */
 
-package lab2.AOOP_lab_grp16.src.Classes;
-import lab2.AOOP_lab_grp16.src.Interfaces.IntFigure;
+package Classes;
+import Interfaces.*;
+
 
 public abstract class ChessPiece implements IntFigure{
     PieceName name;

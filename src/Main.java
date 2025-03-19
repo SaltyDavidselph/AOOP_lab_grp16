@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import lab2.AOOP_lab_grp16.src.Classes.*;
+
+import Classes.*;
 
 /*LAB3 Project. AUTHORS - David Selph
  * Description of program.
  *  -This program prompts the user to enter six chess pieces with their corresponding information (name, color & starting position)
- * to move all of the pieces to a designated position (official chess rules dont apply).
+ * to move all the pieces to a designated position (official chess rules dont apply).
  */
 
 public class Main {
@@ -125,16 +126,16 @@ public class Main {
                     return new King(PieceName.KING, color, col, row);
                 }
                 case BISHOP: {
-                    return new Bishop(color, col, row);
+                    return new Bishop(PieceName.BISHOP, color, col, row);
                 }
                 case ROOK: {
-                    return new Rook(color, col, row);
+                    return new Rook(PieceName.ROOK ,color, col, row);
                 }
                 case PAWN: {
-                    return new Pawn(color, col, row);
+                    return new Pawn(PieceName.PAWN , color, col, row);
                 }
                 case KNIGHT: {
-                    return new Knight(color, col, row);
+                    return new Knight( PieceName.KNIGHT,color, col, row);
                 }
             }
         }

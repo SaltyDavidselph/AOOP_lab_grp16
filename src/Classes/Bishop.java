@@ -3,10 +3,10 @@
 create a class Bishop that implements your interface
 */
 
-package lab2.AOOP_lab_grp16.src.Classes;
-import lab2.AOOP_lab_grp16.src.Interfaces.IntBishop;
+package Classes;
+import Interfaces.*;
 
-public class Bishop implements IntBishop{
+public class Bishop extends ChessPiece implements IntBishop, IntFigure {
 
     protected PieceName name;
     protected Color color;
@@ -21,6 +21,15 @@ public class Bishop implements IntBishop{
         this.color = null;
         this.corX = null;
         this.y = null;
+    }
+
+    public Bishop(PieceName name, Color color, Column corX, Row row){
+        this.name = name;
+        this.color = color;
+        this.corX = corX;
+        this.y = row;
+        this.xCoord = letterToNumber(corX);
+        this.yCoord = row.getValue();
     }
 
     //Author:David Selph
@@ -38,15 +47,6 @@ public class Bishop implements IntBishop{
             case H -> 8;
             default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
         };
-    }
-
-    public Bishop(PieceName name, Color color, Column corX, Row row){
-        this.name = name;
-        this.color = color;
-        this.corX = corX;
-        this.y = row;
-        this.xCoord = letterToNumber(corX);
-        this.yCoord = row.getValue();
     }
 
 
@@ -95,5 +95,10 @@ public class Bishop implements IntBishop{
             //nothing caught it to say it can not do it so it can
             return true;
         }
+    }
+
+    @Override
+    public boolean moveTo(int corX, int y) {
+        return false;
     }
 }

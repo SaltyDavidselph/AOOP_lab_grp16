@@ -8,9 +8,7 @@ Note: you may have to create a package for the interfaces first so you can impor
 *
 */
 
-package lab2.AOOP_lab_grp16.src.Interfaces;
-import lab2.AOOP_lab_grp16.src.Classes.Column;
-import lab2.AOOP_lab_grp16.src.Classes.Row;
+package Interfaces;
 
 public interface IntFigure{
     public boolean moveTo(int corX, int y);

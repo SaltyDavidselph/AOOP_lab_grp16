@@ -7,7 +7,7 @@
 Note: you may have to create a package for the interfaces first so you can import it when your classes implement these interfaces. You may have to play with these and do some experiments
 *
 * */
-package lab2.AOOP_lab_grp16.src.Interfaces;
+package Interfaces;
 
 public interface IntChessBoard{
     public boolean verifyCoordinate(char corX, int y);

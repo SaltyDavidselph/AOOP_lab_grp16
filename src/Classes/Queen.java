@@ -5,8 +5,8 @@
 * 8. When overriding moveTo method in Queen, make use of Rook's moveTo implementation and
 */
 
-package lab2.AOOP_lab_grp16.src.Classes;
-import lab2.AOOP_lab_grp16.src.Interfaces.IntBishop;
+package Classes;
+import Interfaces.IntBishop;
 
 public class Queen extends Rook implements IntBishop{
 

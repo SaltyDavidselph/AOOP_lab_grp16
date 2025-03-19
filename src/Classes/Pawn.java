@@ -3,7 +3,7 @@
 * Also override method "String toString()" so you will be aple to print your chess pieces classes.
 */
 
-package lab2.AOOP_lab_grp16.src.Classes;
+package Classes;
 
 public class Pawn extends ChessPiece {
     public Pawn(PieceName name, Color color, Column corX, Row y){
