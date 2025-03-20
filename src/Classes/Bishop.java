@@ -28,11 +28,11 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
     }
 
     @Override
-    public boolean moveToBishop(int column, int y){
-        if(Math.abs(this.xCord - column) != Math.abs(this.yCord - y)){
+    public boolean moveToBishop(int inX, int inY){
+        if(Math.abs(this.xCord - inX) != Math.abs(this.yCord - inY) || checkForSameness(inX, inY)){
             // if the new cord are both changed the same amount on the x androw it is an invalid move
             return false;
-        }else {
+        } else {
             //nothing caught it to say it can not do it so it can
             return true;
         }

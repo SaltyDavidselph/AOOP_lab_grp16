@@ -12,16 +12,11 @@ public class Pawn extends ChessPiece {
 
     //Needs implementation
     public boolean moveTo(int inX, int inY){
-        if(this.xCord != inX ||  (inY - this.yCord) > 1 || (inY - this.yCord) < 1) {
+        if(this.xCord != inX ||  (inY - this.yCord) > 1 || (inY - this.yCord) < 1 || checkForSameness(inX, inY)) {
             return false;
         }
         else {
             return true;
         }
-    }
-    
-    @Override
-    public String toString(){
-        return "";
     }
 }

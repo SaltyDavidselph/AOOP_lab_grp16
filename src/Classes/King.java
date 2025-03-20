@@ -6,12 +6,12 @@ package Classes;
 
 public class King extends Queen{
     public King(PieceName pieceName, Color color ,Column column, Row row){
-        super(PieceName.KING, color, column, row);
+        super(pieceName, color, column, row);
     }
 
     @Override
     public boolean moveTo(int inX, int inY){
-        if(Math.abs(this.xCord - inX) > 1 || Math.abs(this.yCord - inY) > 1){
+        if(Math.abs(this.xCord - inX) > 1 || Math.abs(this.yCord - inY) > 1 || checkForSameness(inX, inY)){
             return false;
         }
         else{

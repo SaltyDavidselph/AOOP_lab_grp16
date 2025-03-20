@@ -14,10 +14,6 @@ public class Queen extends Rook implements IntBishop{
         super(pieceName, color, column, row);
     }
 
-    public boolean moveToBishop(Column corX, Row y){
-        return true;
-    }
-
     @Override
     public boolean moveToBishop(int inX, int inY) {
         if(Math.abs(this.xCord - inX) != Math.abs(this.yCord - inY)){
@@ -30,19 +26,14 @@ public class Queen extends Rook implements IntBishop{
     }
 
     @Override
-    public boolean moveTo(int corX, int y){
-        if( moveToBishop(corX,y) ){
+    public boolean moveTo(int inX, int inY){
+        if( moveToBishop(inX,inY) ){
             return false;
-        } else if (super.moveTo(corX,y)){
+        } else if (super.moveTo(inX,inY)){
             return false;
         }
         else{
             return true;
         }
-    }
-
-    @Override
-    public String toString(){
-        return "";
     }
 }

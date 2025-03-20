@@ -13,16 +13,11 @@ public class Knight extends ChessPiece {
 
     //Needs implementation
     public boolean moveTo(int inX, int inY){
-        if (!(((Math.abs(this.xCord - inX ) == 1)&&(Math.abs(this.yCord-inY) == 2))||((Math.abs(this.xCord-inX) == 2)&&(Math.abs(this.yCord-inY) == 1)))){
+        if (!(((Math.abs(this.xCord - inX ) == 1)&&(Math.abs(this.yCord-inY) == 2))||((Math.abs(this.xCord-inX) == 2)&&(Math.abs(this.yCord-inY) == 1))) || checkForSameness(inX, inY)){
             return false;
         }
         else{
             return true;
         }
-    }
-
-    @Override
-    public String toString(){
-        return "";
     }
 }

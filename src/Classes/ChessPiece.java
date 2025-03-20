@@ -21,6 +21,8 @@ public abstract class ChessPiece implements IntFigure{
         this.color = null;
         this.column = null;
         this.row = null;
+        this.xCord = 0;
+        this.yCord = 0;
     }
 
     //Constructor with values
@@ -45,6 +47,10 @@ public abstract class ChessPiece implements IntFigure{
             case H -> 8;
             default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
         };
+    }
+
+    protected boolean checkForSameness(int x, int y){
+        return xCord == x && yCord == y;
     }
 
     //Setters
@@ -79,5 +85,10 @@ public abstract class ChessPiece implements IntFigure{
 
     public Row getRow(){
         return row;
+    }
+    
+    @Override
+    public String toString(){
+        return "The "+ this.getColor() + " "+ this.getName()+" at " + "(" + this.getColumn() +"," + this.getRow() +")";
     }
 }

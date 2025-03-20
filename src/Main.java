@@ -308,13 +308,13 @@ public class Main {
      * Author: Angel Torres, David Selph
      */
     public static void move_succsess(ChessPiece chessPiece, Column x_end, Row y_end){
-        System.out.println("The "+ chessPiece.getColor() + " "+ chessPiece.getName()+" can move from (" + chessPiece.getColumn() +"," + chessPiece.getRow() +") to (" + x_end + "," + y_end.getValue() + ")"  );
+        System.out.println( chessPiece +" CAN move to (" + x_end + "," + y_end.getValue() + ")"  );
     }
     /**
      * Print a messge that the desired move is NOT possible
      * Author: Angel Torres, David Selph
      */
     public static void move_failure(ChessPiece chessPiece,  Column x_end, Row y_end){
-        System.out.println("The " + chessPiece.getColor() + " "+ chessPiece.getName() + " can  NOT move from (" + chessPiece.getColumn() + "," + chessPiece.getRow() +") to (" + x_end + "," + y_end.getValue() + ")"    );
+        System.out.println(chessPiece +" CAN NOT move to (" + x_end + "," + y_end.getValue() + ")"    );
     }
 }

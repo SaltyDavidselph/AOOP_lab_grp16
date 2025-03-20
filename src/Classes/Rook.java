@@ -12,12 +12,13 @@ public class Rook extends ChessPiece {
     }
 
     //Needs implementation
-    public boolean moveTo(int corX, int y){
-        return true;
-    }
-
-    @Override
-    public String toString(){
-        return "";
+    public boolean moveTo(int inX, int inY){
+        if (Math.abs((this.xCord - inX)) > 0 && Math.abs((this.yCord - inY )) > 0){
+            // if the new cords are not in both the x and y plane it is an invalid move
+            return false;
+        }else {
+            //nothing caught it to say it can not do it so it can
+            return true;
+        }
     }
 }
