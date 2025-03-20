@@ -27,43 +27,6 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
         this.yCord = row.getValue();
     }
 
-
-    //Setters
-    public void setName(PieceName name){
-        this.name = name;
-    }
-
-    public void setColor(Color color){
-        this.color = color;
-    }
-
-    public void setColumn(Column column){
-        this.column  = column;
-    }
-
-    public void setRow(Row row){
-        this.row = row;
-    }
-
-
-    //Getters
-    public PieceName getName() {
-        return name;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public Column getColumn() {
-        return column;
-    }
-
-    public Row getRow() {
-        return row;
-    }
-
-
     @Override
     public boolean moveToBishop(int column, int y){
         if(Math.abs(this.xCord - column) != Math.abs(this.yCord - y)){
@@ -77,7 +40,6 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
 
     @Override
     public boolean moveTo(int column, int row) {
-
         return moveToBishop(column, row);
     }
 }

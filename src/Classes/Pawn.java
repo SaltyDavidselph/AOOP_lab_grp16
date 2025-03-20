@@ -8,12 +8,16 @@ package Classes;
 public class Pawn extends ChessPiece {
     public Pawn(PieceName name, Color color, Column corX, Row y){
         super(name, color, corX, y);
-
     }
 
     //Needs implementation
-    public boolean moveTo(int corX, int y){
-        return true;
+    public boolean moveTo(int inX, int inY){
+        if(this.xCord != inX ||  (inY - this.yCord) > 1 || (inY - this.yCord) < 1) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
     
     @Override

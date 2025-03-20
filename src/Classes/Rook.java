@@ -13,7 +13,6 @@ public class Rook extends ChessPiece {
 
     //Needs implementation
     public boolean moveTo(int corX, int y){
-
         return true;
     }
 

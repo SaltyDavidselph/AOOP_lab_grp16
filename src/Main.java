@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import Classes.*;
 
+import static Classes.ChessPiece.letterToNumber;
+
 /*LAB3 Project. AUTHORS - David Selph
  * Description of program.
  *  -This program prompts the user to enter six chess pieces with their corresponding information (name, color & starting position)
@@ -48,23 +50,6 @@ public class Main {
 
 
         System.out.println("Goodbye!");
-    }
-
-    //Author:David Selph
-    //Takes the input from the user that corresponds to the x coordinate as a parameter
-    //Convert the letter corresponding to the x position into an integer value
-    public static int letterToNumber(Column letter) {
-        return switch (letter){
-            case A-> 1;
-            case B -> 2;
-            case C -> 3;
-            case D -> 4;
-            case E -> 5;
-            case F -> 6;
-            case G -> 7;
-            case H -> 8;
-            default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
-        };
     }
 
     private static boolean check_pieces(List<ChessPiece> user_pieces){

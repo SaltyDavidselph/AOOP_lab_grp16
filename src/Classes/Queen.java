@@ -19,8 +19,14 @@ public class Queen extends Rook implements IntBishop{
     }
 
     @Override
-    public boolean moveToBishop(int x, int y) {
-        return false;
+    public boolean moveToBishop(int inX, int inY) {
+        if(Math.abs(this.xCord - inX) != Math.abs(this.yCord - inY)){
+            // if the new cord are both changed the same amount on the x androw it is an invalid move
+            return false;
+        }else {
+            //nothing caught it to say it can not do it so it can
+            return true;
+        }
     }
 
     @Override

@@ -29,6 +29,8 @@ public abstract class ChessPiece implements IntFigure{
         this.color = color;
         this.column = corX;
         this.row = y;
+        this.xCord = letterToNumber(column);
+        this.yCord = row.getValue();
     }
 
     public static int letterToNumber(Column letter) {
