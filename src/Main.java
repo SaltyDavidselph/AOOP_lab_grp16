@@ -177,7 +177,7 @@ public class Main {
         }
     }
     public static Color get_color(){
-        String input =  get_user_string("Would you like to be the White or Black Pieces?");
+        String input =  get_user_string("Would you like it to be a White or Black Piece?");
         while(true){
             switch(input){
                 case "white" -> {
@@ -317,5 +317,4 @@ public class Main {
     public static void move_failure(ChessPiece chessPiece,  Column x_end, Row y_end){
         System.out.println("The " + chessPiece.getColor() + " "+ chessPiece.getName() + " can  NOT move from (" + chessPiece.getColumn() + "," + chessPiece.getRow() +") to (" + x_end + "," + y_end.getValue() + ")"    );
     }
-
 }
