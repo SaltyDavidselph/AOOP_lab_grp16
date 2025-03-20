@@ -8,6 +8,7 @@ package Classes;
 public class Pawn extends ChessPiece {
     public Pawn(PieceName name, Color color, Column corX, Row y){
         super(name, color, corX, y);
+
     }
 
     //Needs implementation

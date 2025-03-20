@@ -7,46 +7,24 @@ package Classes;
 import Interfaces.*;
 
 public class Bishop extends ChessPiece implements IntBishop, IntFigure {
-
-    protected PieceName name;
-    protected Color color;
-    protected Column corX;
-    protected Row y;
-    protected int xCoord;
-    protected int yCoord;
-
+    
     //Empty/Default constructor
     public Bishop() {
         this.name = null;
         this.color = null;
-        this.corX = null;
-        this.y = null;
+        this.column = null;
+        this.row = null;
+        this.xCord =0;
+        this.yCord = 0;
     }
 
-    public Bishop(PieceName name, Color color, Column corX, Row row){
+    public Bishop(PieceName name, Color color, Column column, Row row){
         this.name = name;
         this.color = color;
-        this.corX = corX;
-        this.y = row;
-        this.xCoord = letterToNumber(corX);
-        this.yCoord = row.getValue();
-    }
-
-    //Author:David Selph
-    //Takes the input from the user that corresponds to the x coordinate as a parameter
-    //Convert the letter corresponding to the x position into an integer value
-    public static int letterToNumber(Column letter) {
-        return switch (letter){
-            case A-> 1;
-            case B -> 2;
-            case C -> 3;
-            case D -> 4;
-            case E -> 5;
-            case F -> 6;
-            case G -> 7;
-            case H -> 8;
-            default -> throw new IllegalStateException("Value not on the x-asis of the chess board: " + letter);
-        };
+        this.column = column;
+        this.row = row;
+        this.xCord = letterToNumber(column);
+        this.yCord = row.getValue();
     }
 
 
@@ -59,12 +37,12 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
         this.color = color;
     }
 
-    public void setColumn(Column corX){
-        this.corX  = corX;
+    public void setColumn(Column column){
+        this.column  = column;
     }
 
     public void setRow(Row row){
-        this.y = row;
+        this.row = row;
     }
 
 
@@ -78,18 +56,18 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
     }
 
     public Column getColumn() {
-        return corX;
+        return column;
     }
 
     public Row getRow() {
-        return y;
+        return row;
     }
 
 
     @Override
-    public boolean moveToBishop(int corX, int y){
-        if(Math.abs(this.xCoord - corX) != Math.abs(this.yCoord - y)){
-            // if the new cord are both changed the same amount on the x and y it is an invalid move
+    public boolean moveToBishop(int column, int y){
+        if(Math.abs(this.xCord - column) != Math.abs(this.yCord - y)){
+            // if the new cord are both changed the same amount on the x androw it is an invalid move
             return false;
         }else {
             //nothing caught it to say it can not do it so it can
@@ -98,7 +76,8 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
     }
 
     @Override
-    public boolean moveTo(int corX, int y) {
-        return false;
+    public boolean moveTo(int column, int row) {
+
+        return moveToBishop(column, row);
     }
 }

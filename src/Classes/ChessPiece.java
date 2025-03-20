@@ -8,25 +8,27 @@ import Interfaces.*;
 
 
 public abstract class ChessPiece implements IntFigure{
-    PieceName name;
-    Color color;
-    Column corX;
-    Row y;
+     PieceName name;
+     Color color;
+     Column column;
+     Row row;
+     int xCord;
+     int yCord;
 
     //Empty/Default constructor
     public ChessPiece(){
         this.name = null;
         this.color = null;
-        this.corX = null;
-        this.y = null;
+        this.column = null;
+        this.row = null;
     }
 
     //Constructor with values
     public ChessPiece(PieceName name, Color color, Column corX, Row y){
         this.name = name;
         this.color = color;
-        this.corX = corX;
-        this.y = y;
+        this.column = corX;
+        this.row = y;
     }
 
     public static int letterToNumber(Column letter) {
@@ -53,11 +55,11 @@ public abstract class ChessPiece implements IntFigure{
     }
 
     public void setColumn(Column corX){
-        this.corX  = corX;
+        this.column  = corX;
     }
 
     public void setRow(Row row){
-        this.y = row;
+        this.row = row;
     }
 //
 //    //Getters
@@ -70,10 +72,10 @@ public abstract class ChessPiece implements IntFigure{
     }
 
     public Column getColumn(){
-        return corX;
+        return column;
     }
 
     public Row getRow(){
-        return y;
+        return row;
     }
 }
