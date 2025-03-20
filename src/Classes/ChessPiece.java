@@ -69,8 +69,8 @@ public abstract class ChessPiece implements IntFigure{
     public void setRow(Row row){
         this.row = row;
     }
-//
-//    //Getters
+
+   //Getters
     public PieceName getName(){
         return name;
     }
@@ -89,6 +89,6 @@ public abstract class ChessPiece implements IntFigure{
     
     @Override
     public String toString(){
-        return "The "+ this.getColor() + " "+ this.getName()+" at " + "(" + this.getColumn() +"," + this.getRow() +")";
+        return "The "+ this.color + " "+ this.name+" at " + "(" + this.column +"," + this.row.getValue() +")";
     }
 }

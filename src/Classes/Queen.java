@@ -27,7 +27,10 @@ public class Queen extends Rook implements IntBishop{
 
     @Override
     public boolean moveTo(int inX, int inY){
-        if( moveToBishop(inX,inY) || super.moveTo(inX,inY)){
+
+        boolean bis = moveToBishop(inX,inY) ;
+        boolean rook = super.moveTo(inX,inY);
+        if( !bis && !rook  || checkForSameness(inX, inY)){
             return false;
         }
         else{
