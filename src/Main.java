@@ -30,6 +30,10 @@ public class Main {
                 all_parts = false;
             }else{
             }
+            System.out.println("Your pieces are:");
+            for(ChessPiece pos : pieces){
+                System.out.println(pos.toString());
+            }
         }
 
         System.out.println("Congratulations! You gave one of each piece!! \nOnto where they are gonna move!");
