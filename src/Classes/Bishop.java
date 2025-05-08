@@ -18,7 +18,7 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
         this.yCord = 0;
     }
 
-    public Bishop(PieceName name, Color color, Column column, Row row){
+    public Bishop(PieceName name, Colors color, Column column, Row row){
         this.name = name;
         this.color = color;
         this.column = column;
@@ -30,7 +30,7 @@ public class Bishop extends ChessPiece implements IntBishop, IntFigure {
     @Override
     public boolean moveToBishop(int inX, int inY){
         if(Math.abs(this.xCord - inX) != Math.abs(this.yCord - inY) || checkForSameness(inX, inY)){
-            // if the new cord are both changed the same amount on the x androw it is an invalid move
+            // if the new cord are both changed the same amount on the x and row it is an invalid move
             return false;
         } else {
             //nothing caught it to say it can not do it so it can

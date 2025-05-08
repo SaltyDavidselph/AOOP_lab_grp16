@@ -5,10 +5,17 @@
 package Classes;
 
 public enum PieceName{
-    KING,
-    PAWN,
-    QUEEN,
-    BISHOP,
-    ROOK,
-    KNIGHT
+    KING('K'),
+    PAWN('P'),
+    QUEEN('Q'),
+    BISHOP('B'),
+    ROOK('R'),
+    KNIGHT('N');
+    private char value;
+    PieceName(char value) {
+        this.value = value;
+    }
+    public char getValue() {
+        return value;
+    }
 }

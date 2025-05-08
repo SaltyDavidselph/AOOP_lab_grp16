@@ -10,7 +10,7 @@ import Interfaces.IntBishop;
 
 public class Queen extends Rook implements IntBishop{
 
-    public Queen(PieceName pieceName, Color color, Column column, Row row){
+    public Queen(PieceName pieceName, Colors color, Column column, Row row){
         super(pieceName, color, column, row);
     }
 

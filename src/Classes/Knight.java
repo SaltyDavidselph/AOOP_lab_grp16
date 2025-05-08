@@ -7,7 +7,7 @@ package Classes;
 
 public class Knight extends ChessPiece {
 
-    public Knight(PieceName name, Color color, Column corX, Row y){
+    public Knight(PieceName name, Colors color, Column corX, Row y){
         super(name, color, corX, y);
     }
 

@@ -9,7 +9,7 @@ import Interfaces.*;
 
 public abstract class ChessPiece implements IntFigure{
      PieceName name;
-     Color color;
+     Colors color;
      Column column;
      Row row;
      int xCord;
@@ -26,7 +26,7 @@ public abstract class ChessPiece implements IntFigure{
     }
 
     //Constructor with values
-    public ChessPiece(PieceName name, Color color, Column corX, Row y){
+    public ChessPiece(PieceName name, Colors color, Column corX, Row y){
         this.name = name;
         this.color = color;
         this.column = corX;
@@ -58,7 +58,7 @@ public abstract class ChessPiece implements IntFigure{
         this.name = name;
     }
 
-    public void setColor(Color color){
+    public void setColor(Colors color){
         this.color = color;
     }
 
@@ -75,7 +75,7 @@ public abstract class ChessPiece implements IntFigure{
         return name;
     }
 
-    public Color getColor(){
+    public Colors getColor(){
         return color;
     }
 
@@ -86,7 +86,7 @@ public abstract class ChessPiece implements IntFigure{
     public Row getRow(){
         return row;
     }
-    
+
     @Override
     public String toString(){
         return "The "+ this.color + " "+ this.name+" at " + "(" + this.column +"," + this.row.getValue() +")";

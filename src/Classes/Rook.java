@@ -7,7 +7,7 @@ package Classes;
 
 public class Rook extends ChessPiece {
 
-    public Rook(PieceName name, Color color, Column corX, Row y){
+    public Rook(PieceName name, Colors color, Column corX, Row y){
         super(name, color, corX, y);
     }
 

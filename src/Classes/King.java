@@ -5,7 +5,7 @@
 package Classes;
 
 public class King extends Queen{
-    public King(PieceName pieceName, Color color ,Column column, Row row){
+    public King(PieceName pieceName, Colors color , Column column, Row row){
         super(pieceName, color, column, row);
     }
 
