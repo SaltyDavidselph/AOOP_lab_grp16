@@ -28,7 +28,7 @@ public class Main {
                 JPanel boardCell = new JPanel(new GridLayout());
                 // color the parts black is needed
                 boolean isWhite = (row + col) % 2 == 0;
-                boardCell.setBackground(isWhite ? Color.WHITE : Color.BLACK);
+                boardCell.setBackground(isWhite ? Color.WHITE : Color.DARK_GRAY);
                 boardCells[row][col] = boardCell;
                 boardContainerPanel.add(boardCell);
             }
